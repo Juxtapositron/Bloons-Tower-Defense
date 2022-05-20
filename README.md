@@ -7,3 +7,5 @@ Shadman (5/17): I filled out our form, made our repository, and wrote our MVP's 
 Kevin (5/17): I created the Google doc and initalized the group name, member name, and brief project description. I brainstormed with Shadman the MVP, arguing about certain features that would constitute a minimum. Populated methods and properties for the Shop and Monkey classes in the outline and improved the formatting.
 
 Shadman (5/19): I started and finished our first UML. Consulted with Kevin as to how I can contribute to code, worked out that I can keep managing our project vision and create the map class.
+
+Kevin (5/19): I cleaned up the UML to align with UML standards. Wrote out most of the parts of the prototype and formatted it.
