@@ -19,8 +19,15 @@ public class Monkey {
     whereY = y-dim/2;
   }
  
+  float getWhereX() {
+    return whereX;
+  }
+  
+  float getWhereY() {
+    return whereY;
+  }
   void display() {
     tint(255);
-    image(photo, whereX, whereY);
+    image(photo, getWhereX(), getWhereY());
   }
 }
