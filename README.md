@@ -12,3 +12,6 @@ Kevin (5/19): I cleaned up the UML to align with UML standards. Wrote out most o
 
 Shadman (5/23): I started coding! While Kevin covered the Map, Monkey, PurchaseMonkey, and Shop classes, I managed the Balloon class and the Path classes. So far, only initial constructors and accessor/mutator methods have been created!
 
+Kevin (5/23): I updated OOP standards for Monkey class. I'm waiting on Shadman to finish with his code to progress with my phase.
+
+Kevin (5/24): I started looking into what the map design should look like. We decided on the map Ocean Road. Also updated UML diagram to account for the methods we've shifted around.
