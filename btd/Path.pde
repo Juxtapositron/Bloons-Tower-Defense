@@ -18,4 +18,6 @@ public int setDir(int other){
   dir = other;
   return x;
 }
+
+
 }
