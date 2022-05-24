@@ -17,17 +17,17 @@ hp = _hp;
 x = _x;
 y = _y;
 velocity = 0.6 * _hp;
-if (hp = 5)
+if (hp == 5)
 // pink image
-if (hp = 4)
+if (hp == 4)
 // yellow image
-if (hp = 3)
+if (hp == 3)
 // green image
-if (hp = 2)
+if (hp == 2)
 // blue image
-if (hp = 1)
+if (hp == 1)
 // red image
-if (hp = 0)
+if (hp == 0)
 // blank image
 }
 
