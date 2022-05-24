@@ -1,5 +1,6 @@
 Shop shopping;
 Map map;
+ArrayList<Path> paths = new ArrayList<Path>();
 ArrayList<Monkey> monkies = new ArrayList<Monkey>();
 void setup() {
   size(1400, 1000);
