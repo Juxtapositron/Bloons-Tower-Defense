@@ -8,6 +8,7 @@ public class PurchaseMonkey {
   boolean clicked = false;
   String placeURL;
   boolean overlap = false;
+  
   public PurchaseMonkey(float _price, String shopURL, String _placeURL, float _x, float _y) {
     placeURL = _placeURL;
     price = _price;
