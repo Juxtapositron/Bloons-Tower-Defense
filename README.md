@@ -14,4 +14,8 @@ Shadman (5/23): I started coding! While Kevin covered the Map, Monkey, PurchaseM
 
 Kevin (5/23): I updated OOP standards for Monkey class. I'm waiting on Shadman to finish with his code to progress with my phase.
 
+<<<<<<< HEAD
 Kevin (5/24): I started looking into what the map design should look like. We decided on the map Ocean Road. Also updated UML diagram to account for the methods we've shifted around.
+=======
+Kevin (5/24): I started looking into what the map design should look like. We decided on the map Ocean Road. Also updated UML diagram to account for the methods we've shifted around.
+>>>>>>> 9c3cb36a4d026864c1336baa5d12e9c74059f00c
