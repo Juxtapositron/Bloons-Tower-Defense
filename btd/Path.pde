@@ -19,12 +19,5 @@ public int setDir(int other){
   return x;
 }
 
-public float[] move(float x1, float y1){
-  float tempx = x;
-  float tempy = y;
-  x = x1;
-  y = y1;
-  return new float[]{tempx, tempy};
-}
 
 }

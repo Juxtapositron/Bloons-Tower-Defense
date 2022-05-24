@@ -8,4 +8,7 @@ Kevin (5/17): I created the Google doc and initalized the group name, member nam
 
 Shadman (5/19): I started and finished our first UML. Consulted with Kevin as to how I can contribute to code, worked out that I can keep managing our project vision and create the map class.
 
+Kevin (5/19): I cleaned up the UML to align with UML standards. Wrote out most of the parts of the prototype and formatted it.
+
 Shadman (5/23): I started coding! While Kevin covered the Map, Monkey, PurchaseMonkey, and Shop classes, I managed the Balloon class and the Path classes. So far, only initial constructors and accessor/mutator methods have been created!
+
