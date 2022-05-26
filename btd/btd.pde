@@ -67,16 +67,20 @@ void draw() {
   shopping.display();
   map.display();
   
+  visualizePath();
   
+}
+
+void mouseClicked() {
+  shopping.mouseClicked();
+  System.out.println(mouseX + " " + mouseY);
+}
+
+void visualizePath() {
   for (int i = 0; i < pivots.size()-1; i++) {
     int[] curr = pivots.get(i);
     int[] next = pivots.get(i+1);
     
     line(curr[0], curr[1], next[0], next[1]);
   }
-}
-
-void mouseClicked() {
-  shopping.mouseClicked();
-  System.out.println(mouseX + " " + mouseY);
 }
