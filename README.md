@@ -19,4 +19,8 @@ Kevin (5/24): I started looking into what the map design should look like. We de
 
 Shadman (5/24): I put an extra Bloon parameter in the Path constructor, so each Path can contain a Bloon. Decided on the moving mechanics of the Bloons!
 
+Kevin (5/25) : I hardcoded pivots for the path of a specific map. Then I created an algorithm to turn 21 paths into 4k+ paths that trace along the path of the map.
+
 Shadman (5/25) : Received word that Path should really contain a Bloon array. Remove direction parameter, making preparations to change Path into the class that move Bloons.
+
+Kevin (5/26) : I updated the code I created earlier to follow OOP standards better. I also did the colison functionality so that a monkey cannot be placed on top of a path
