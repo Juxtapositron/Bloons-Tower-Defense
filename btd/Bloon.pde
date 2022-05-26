@@ -18,18 +18,17 @@ public class Bloon {
     x = _x;
     y = _y;
     velocity = 0.6 * _hp;
-    //if (hp == 5)
-    // pink image
-    //if (hp == 4)
-    // yellow image
-    //if (hp == 3)
-    // green image
-    //if (hp == 2)
-    // blue image
-    //if (hp == 1)
-    // red image
-    //if (hp == 0)
-    // blank image
+    if (hp == 5)
+    bloon = loadImage("Pink.png");
+    if (hp == 4)
+    bloon = loadImage("Yellow.png");
+    if (hp == 3)
+    bloon = loadImage("Green.png");
+    if (hp == 2)
+    bloon = loadImage("Blue.png");
+    if (hp == 1)
+    bloon = loadImage("Red.png");
+    bloon.resize(100, 100);
   }
 
 public Bloon(int _hp) {
@@ -52,8 +51,7 @@ public Bloon(int _hp) {
     return new float[]{x, y};
   }
   
-  public int move(){
-    
-    return 1;
+  public void display(){
+     image(bloon, x, y);
   }
 }
