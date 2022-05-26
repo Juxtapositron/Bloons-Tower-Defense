@@ -25,5 +25,14 @@ public Bloon removeBloon(Bloon other){
   return other;
 }
 
+public Bloon move(int index){
+  Bloon target = b.remove(index);
+  if (paths.size() > target.getHP() + index)
+  paths.get(index + target.getHP()).addBloon(target);
+  return target;
+}
 
+ public void display(Bloon other){
+     image(other.getImg(), x, y);
+  }
 }
