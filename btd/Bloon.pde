@@ -1,8 +1,7 @@
 public class Bloon {
 
-  private int hp;
+  private int hp; // also velocity
   private float x, y;
-  private float velocity;
   private PImage bloon;
 
   // if given hp > 6, sets it to 5.
@@ -17,7 +16,7 @@ public class Bloon {
     hp = _hp;
     x = _x;
     y = _y;
-    velocity = 0.6 * _hp;
+    if(hp > 0 && hp < 6){
     if (hp == 5)
     bloon = loadImage("Pink.png");
     if (hp == 4)
@@ -29,6 +28,7 @@ public class Bloon {
     if (hp == 1)
     bloon = loadImage("Red.png");
     bloon.resize(100, 100);
+    }
   }
 
 public Bloon(int _hp) {
@@ -37,7 +37,9 @@ public Bloon(int _hp) {
   public int getHP() {
     return hp;
   }
-
+  public PImage getImg() {
+    return bloon;
+  }
   public int deplete() {
     hp--;
     if (hp == 0) {
@@ -51,7 +53,5 @@ public Bloon(int _hp) {
     return new float[]{x, y};
   }
   
-  public void display(){
-     image(bloon, x, y);
-  }
+ 
 }
