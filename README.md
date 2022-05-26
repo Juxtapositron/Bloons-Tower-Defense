@@ -18,3 +18,5 @@ Kevin (5/23): I updated OOP standards for Monkey class. I'm waiting on Shadman t
 Kevin (5/24): I started looking into what the map design should look like. We decided on the map Ocean Road. Also updated UML diagram to account for the methods we've shifted around.
 
 Shadman (5/24): I put an extra Bloon parameter in the Path constructor, so each Path can contain a Bloon. Decided on the moving mechanics of the Bloons!
+
+Shadman (5/25) : Received word that Path should really contain a Bloon array. Remove direction parameter, making preparations to change Path into the class that move Bloons.
