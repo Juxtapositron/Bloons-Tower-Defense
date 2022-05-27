@@ -24,3 +24,5 @@ Kevin (5/25) : I hardcoded pivots for the path of a specific map. Then I created
 Shadman (5/25) : Received word that Path should really contain a Bloon array. Remove direction parameter, making preparations to change Path into the class that move Bloons.
 
 Kevin (5/26) : I updated the code I created earlier to follow OOP standards better. I also did the colison functionality so that a monkey cannot be placed on top of a path
+
+Shadman (5/26) : Started the creation of Round 1. Made a working move method, and should be done coding both paths and bloons.
