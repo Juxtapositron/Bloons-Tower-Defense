@@ -34,6 +34,10 @@ public class Bloon {
 public Bloon(int _hp) {
      this(_hp, 0f, 0f);
   }
+  
+public Bloon(int _hp, Path p){
+   this(_hp, p.location()[0], p.location()[1]);
+}
   public int getHP() {
     return hp;
   }

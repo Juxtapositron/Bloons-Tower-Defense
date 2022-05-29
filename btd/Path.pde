@@ -20,9 +20,15 @@ public Bloon addBloon(Bloon other){
   b.add(other);
   return other;
 }
+
 public Bloon removeBloon(Bloon other){
   b.remove(other);
   return other;
+}
+
+public void addSet(ArrayList<Bloon> other){
+  for (int i = 0; i<other.size(); i++)
+   b.add(other.get(i));
 }
 
 public Bloon move(int index){
@@ -32,7 +38,19 @@ public Bloon move(int index){
   return target;
 }
 
+public void move(){
+  for (int i = 0; i<b.size(); i++){
+    move(i);
+  }
+}
+
  public void display(Bloon other){
      image(other.getImg(), x, y);
   }
+  
+ public void display(){
+   for(int i = 0; i<b.size(); i++){
+     display(b.get(i));
+   }
+ }
 }
