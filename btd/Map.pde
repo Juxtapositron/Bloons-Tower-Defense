@@ -1,4 +1,3 @@
-ArrayList<Path> paths = new ArrayList<Path>();
 ArrayList<int[]> pivots = new ArrayList<int[]>();
 
 public class Map {
