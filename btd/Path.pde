@@ -33,8 +33,8 @@ public void addSet(ArrayList<Bloon> other){
 
 public Bloon move(int index){
   Bloon target = b.remove(index);
-  if (paths.size() > target.getHP() + index)
-  paths.get(index + target.getHP()).addBloon(target);
+  if (paths.size() > target.getVel() + index)
+  paths.get(index + target.getVel()).addBloon(target);
   return target;
 }
 
