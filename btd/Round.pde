@@ -15,6 +15,7 @@ public class Round {
  }
 
  public void move(){
+   paths.get(x).display();
    paths.get(x).move();
    x++;
  }

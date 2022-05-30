@@ -33,7 +33,6 @@ void draw() {
   map.display();
 
   one.start();
-  while(one.getX()<paths.size()-1)
   one.move();
 }
 
