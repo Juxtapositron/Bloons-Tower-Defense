@@ -16,28 +16,30 @@ public class Bloon {
     hp = _hp;
     x = _x;
     y = _y;
-    if(hp > 0 && hp < 6){
-    if (hp == 5)
-    bloon = loadImage("Pink.png");
-    if (hp == 4)
-    bloon = loadImage("Yellow.png");
-    if (hp == 3)
-    bloon = loadImage("Green.png");
-    if (hp == 2)
-    bloon = loadImage("Blue.png");
-    if (hp == 1)
-    bloon = loadImage("Red.png");
-    bloon.resize(100, 100);
+
+
+    if (hp > 0 && hp < 6) {
+      if (hp == 5)
+        bloon = loadImage("Pink.png");
+      if (hp == 4)
+        bloon = loadImage("Yellow.png");
+      if (hp == 3)
+        bloon = loadImage("Green.png");
+      if (hp == 2)
+        bloon = loadImage("Blue.png");
+      if (hp == 1)
+        bloon = loadImage("Red.png");
+      bloon.resize(50, 50);
     }
   }
 
-public Bloon(int _hp) {
-     this(_hp, 0f, 0f);
+  public Bloon(int _hp) {
+    this(_hp, 0f, 0f);
   }
-  
-public Bloon(int _hp, Path p){
-   this(_hp, p.location()[0], p.location()[1]);
-}
+
+  public Bloon(int _hp, Path p) {
+    this(_hp, p.location()[0], p.location()[1]);
+  }
   public int getHP() {
     return hp;
   }
@@ -56,6 +58,4 @@ public Bloon(int _hp, Path p){
   public float[] location() {
     return new float[]{x, y};
   }
-  
- 
 }
