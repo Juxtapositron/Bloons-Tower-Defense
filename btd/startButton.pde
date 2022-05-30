@@ -2,27 +2,32 @@ public class StartButton {
 
   float x;
   float y;
-  int dim = 120;
-  float where;
+  int dimX = 120;
+  int dimY= 300;
+
   boolean clicked = false;
   boolean overlap = false;
-
+  int b = 0;
   public StartButton(float _x, float _y) {
     x = _x;
     y = _y;
-    where = x-dim/2;
+
   }
 
   void onClick() {
   }
 
   boolean overRect() {
-    return mouseX >= where && mouseX <= where+dim && mouseY >= y && mouseY <= y+dim;
+    return mouseX >= x && mouseX <= x+dimY && mouseY >= y && mouseY <= y+dimX;
   }
 
   void display() {
-    rect(x, y, dim, dim);
+    fill(255);
+    rect(x, y, dimY, dimX, 20, 20, 20, 20);
+    
     if (overRect()) {
+      
+    } else {
       
     }
   }
