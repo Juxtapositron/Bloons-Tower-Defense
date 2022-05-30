@@ -8,7 +8,7 @@ int tick;
 Round one;
 ArrayList<Integer> bindex = new ArrayList<Integer>();
 boolean roundStarted = false;
-StartButton button = new StartButton(50, 850);
+StartButton button = new StartButton(35, 800);
 
 int previousBindexLength;
 void setup() {
@@ -51,6 +51,7 @@ void draw() {
     }
     previousBindexLength = bindex.size();
   }
+  
   button.display();
   
   
