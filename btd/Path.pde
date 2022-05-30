@@ -1,48 +1,75 @@
 import java.util.*;
-public class Path{
-private float x, y;
-private ArrayList<Bloon> b;
-public Path(float _x, float _y, ArrayList<Bloon> _b){
-  x = _x;
-  y = _y;
-  b = _b;
-}
-public Path(float _x, float _y){
-  this(_x, _y, new ArrayList<Bloon>());
-}
+public class Path {
+  private float x, y;
+  private ArrayList<Bloon> b;
+  public Path(float _x, float _y, ArrayList<Bloon> _b) {
+    x = _x;
+    y = _y;
+    b = _b;
+  }
+  public Path(float _x, float _y) {
+    this(_x, _y, new ArrayList<Bloon>());
+  }
 
 
 
-public float[] location(){
-  return new float[] {x, y};
-}
-public Bloon addBloon(Bloon other){
-  b.add(other);
-  return other;
-}
+  public float[] location() {
+    return new float[] {x, y};
+  }
+  public Bloon addBloon(Bloon other) {
+    b.add(other);
+    return other;
+  }
 
-public Bloon removeBloon(Bloon other){
-  b.remove(other);
-  return other;
-}
+  public Bloon removeBloon(Bloon other) {
+    b.remove(other);
+    return other;
+  }
 
-public void addSet(ArrayList<Bloon> other){
-  for (int i = 0; i<other.size(); i++)
-   b.add(other.get(i));
-}
+  public void addSet(ArrayList<Bloon> other) {
+    for (int i = 0; i<other.size(); i++)
+      b.add(other.get(i));
+  }
 
-public Bloon move(int index){
-  Bloon target = b.remove(index);
-  if (paths.size() > target.getHP() + index)
-  paths.get(index + target.getHP()).addBloon(target);
-  return target;
-}
+  public void move(int currentPathIndex) {
+    //currentPath is where this is currently
+    Bloon currBloon = b.get(0);
 
-public void move(){
-  for (int i = 0; i<b.size(); i++){
-    move(i);
+
+    int newPathIndex = currBloon.getVel() + currentPathIndex; //newPath is where it will land on
+
+    if (newPathIndex >= paths.size()) {
+      Path currPath = paths.get(currentPathIndex);
+      currPath.removeBloon(currBloon);
+      
+      
+    } else {
+      Path newPath = paths.get(newPathIndex);
+      Path currPath = paths.get(currentPathIndex);
+
+
+      newPath.addBloon(currBloon);
+      currPath.removeBloon(currBloon);
+
+      bindex.add(newPathIndex);
+    }
+  }
+
+  public int size() {
+    return b.size();
+  }
+
+  public void display(Bloon other) {
+    image(other.getImg(), x, y);
+  }
+
+  public void display() {
+    for (int i = 0; i<b.size(); i++) {
+      display(b.get(i));
+    }
   }
 }
+<<<<<<< HEAD
 
  public void display(Bloon other){
      image(other.getImg(), x-25, y-25);
@@ -54,3 +81,5 @@ public void move(){
    }
  }
 }
+=======
+>>>>>>> 2dbbbf95fd3bc8c012a2d6bf247b02e5240080f2
