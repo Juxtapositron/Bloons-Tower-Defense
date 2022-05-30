@@ -45,7 +45,7 @@ public void move(){
 }
 
  public void display(Bloon other){
-     image(other.getImg(), x, y);
+     image(other.getImg(), x-25, y-25);
   }
   
  public void display(){
