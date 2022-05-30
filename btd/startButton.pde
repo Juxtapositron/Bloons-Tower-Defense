@@ -30,7 +30,7 @@ public class StartButton {
 
   void display() {
     if (!clicked) {
-
+      textSize(50);
       if (overRect()) {
         fill(38, 165, 52);
         rect(x, y, dimY, dimX, 20, 20, 20, 20);
