@@ -1,4 +1,5 @@
 ArrayList<int[]> pivots = new ArrayList<int[]>();
+int lives = 200;
 
 public class Map {
   
@@ -96,12 +97,13 @@ public class Map {
   }
 
   void display() {
-    visualizePath();
     for (int i = 0; i < monkies.size(); i++) {
       Monkey m = monkies.get(i);
       m.display();
       
     }
+    textSize(50); 
+    text("Lives remaining: " + lives, 0, 40);
   }
   
   

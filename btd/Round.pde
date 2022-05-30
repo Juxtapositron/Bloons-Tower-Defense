@@ -10,8 +10,8 @@ public class Round {
       Path beginning = paths.get(0);
       Bloon current = bloons.get(0);
 
-
-      if (tick%100 == 0) {
+      
+      if (tick%70 == 0) {
 
         bloons.remove(0);
         beginning.addBloon(current);
