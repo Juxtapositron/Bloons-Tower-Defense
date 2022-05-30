@@ -60,26 +60,13 @@ public class Path {
   }
 
   public void display(Bloon other) {
-    image(other.getImg(), x, y);
+    image(other.getImg(), x-25, y-25);
   }
 
-  public void display() {
-    for (int i = 0; i<b.size(); i++) {
-      display(b.get(i));
-    }
-  }
-}
-<<<<<<< HEAD
 
- public void display(Bloon other){
-     image(other.getImg(), x-25, y-25);
-  }
-  
  public void display(){
    for(int i = 0; i<b.size(); i++){
      display(b.get(i));
    }
  }
 }
-=======
->>>>>>> 2dbbbf95fd3bc8c012a2d6bf247b02e5240080f2
