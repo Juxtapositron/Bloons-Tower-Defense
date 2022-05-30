@@ -3,57 +3,84 @@ Map map;
 public ArrayList<Path> paths = new ArrayList<Path>();
 ArrayList<Monkey> monkies = new ArrayList<Monkey>();
 PImage or;
-ArrayList<Bloon> round1 = new ArrayList<Bloon>();
+
 int tick;
-Round one;
 ArrayList<Integer> bindex = new ArrayList<Integer>();
 boolean roundStarted = false;
-StartButton button = new StartButton(50, 850);
+StartButton button = new StartButton(35, 800);
 
+ArrayList<Round> listOfRounds = new ArrayList<Round>();
 int previousBindexLength;
+boolean victory = false;
+boolean lost = false;
 void setup() {
   tick = 0;
   size(1400, 1000);
   shopping = new Shop();
   map = new Map();
 
-  or = loadImage("./src/or.jpg");
+  or = loadImage("./src/or.jpg"); //loads the map in
   or.resize(1000, 1000);
-  for (int i = 0; i<10; i++) {
-    Bloon first = new Bloon(1, paths.get(0));
-    round1.add(first);
-  }
 
-  for (int i = 0; i<10; i++) {
-    Bloon first = new Bloon(2, paths.get(0));
-    round1.add(first);
-  }
-  one = new Round(round1);
-  
+  listOfRounds.add(new Round(new int[] {5, 100})); //this is like saying 5 red bloons
+  listOfRounds.add(new Round(new int[] {1, 10, 2, 5})); //this is like saying 10 red bloons followed by 5 blue bloons
 }
 
 void draw() {
-  tick++;
-  background(255);
-
-  image(or, 0, 0);
-  shopping.display();
-  map.display();
-
-  //round is over when bindex == 0 AND the previous bindex was greater than 0;
-  if (roundStarted) {
-    one.start();
-    one.move();
-    
-    if (bindex.size() == 0 && previousBindexLength > 0) {
-      roundStarted = false;
-      button.unClick();
-    }
-    previousBindexLength = bindex.size();
+  if (lives <= 0) {
+    lost = true;
+    lives = 0;
   }
-  button.display();
-  
-  
+  if (!victory && !lost) {
+    tick++;
+    background(255);
+
+    image(or, 0, 0);
+    shopping.display();
+    map.display();
+
+
+
+    if (roundStarted) {
+      Round upcoming = listOfRounds.get(0);
+      upcoming.start();
+      upcoming.move();
+
+      
+      if (bindex.size() == 0 && previousBindexLength > 0) {
+        //round is over when bindex == 0 AND the previous bindex was greater than 0;
+        roundStarted = false;
+        button.unClick();
+        listOfRounds.remove(0); //dismount the finished round from the list
+
+        if (listOfRounds.size() == 0) { //VICTORY, NO ROUNDS LEFT
+          victory = true;
+
+          //this code is to remove the pesky bloon that doesn't disappear right away
+          bindex = new ArrayList<Integer>();
+          background(255);
+          image(or, 0, 0);
+          shopping.display();
+          map.display();
+        }
+      }
+      previousBindexLength = bindex.size();
+    }
+
+    button.display();
+  } else { //VICTORY
+    if (victory) {
+
+      fill(33, 232, 94); //green victory
+      textSize(320);
+      text("VICTORY", 10, 600);
+    }
+    if (lost) {
+      fill(250, 3, 60); //red lost
+      textSize(300);
+      text("YOU LOST", 10, 600);
+    }
+  }
 }
 
 void mouseClicked() {

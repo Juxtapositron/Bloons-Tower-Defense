@@ -102,8 +102,9 @@ public class Map {
       m.display();
       
     }
-    textSize(50); 
-    text("Lives remaining: " + lives, 0, 40);
+    textSize(30);
+    fill(255, 0, 0);
+    text(lives + "❤", 10, 990);
   }
   
   
