@@ -38,6 +38,9 @@ public Bloon move(int index){
   return target;
 }
 
+public int size(){
+  return b.size();
+}
 public void move(){
   for (int i = 0; i<b.size(); i++){
     move(i);

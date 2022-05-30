@@ -1,24 +1,28 @@
 public class Round {
-  private int x;
+
 
   ArrayList<Bloon> bloons;
-  public Round(ArrayList<Bloon> b, int _x) {
+  public Round(ArrayList<Bloon> b) {
     bloons = b;
-    x = _x;
   }
   public void start() {
-    paths.get(x).addSet(bloons);
-}
+    Path beginning = paths.get(0);
+    
+    if(bloons.size() > 0){
+      Bloon current = bloons.get(0);
+      bloons.remove(0);
+      if (tick%10 == 0)
+        beginning.addBloon(current);
+    }
+  }
 
- public int getX(){
-   return x;
- }
 
- public void move(){
-   paths.get(x).display();
-   paths.get(x).move();
-   x++;
- }
- 
- 
+  public void move() {
+    for (int i = 0; i<paths.size(); i++) {
+      if (paths.get(i).size() > 0){
+        paths.get(i).display();
+      paths.get(i).move();
+      }
+    }
+  }
 }
