@@ -16,12 +16,12 @@ void setup() {
   or = loadImage("./src/or.jpg");
   or.resize(1000, 1000);
 
-  for (int i = 0; i<20; i++) {
+  for (int i = 0; i<1; i++) {
     //paths.get(0) is the first path, and we are directing every bloon to it
     Bloon first = new Bloon(1, paths.get(0));
     round1.add(first);
   }
-  one = new Round(round1);
+  one = new Round(round1, 0);
 }
 
 void draw() {
@@ -33,6 +33,8 @@ void draw() {
   map.display();
 
   one.start();
+  while(one.getX()<paths.size()-1)
+  one.move();
 }
 
 void mouseClicked() {

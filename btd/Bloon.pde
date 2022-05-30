@@ -1,6 +1,6 @@
 public class Bloon {
 
-  private int hp; // also velocity
+  private int hp;
   private float x, y;
   private PImage bloon;
 
@@ -42,6 +42,10 @@ public class Bloon {
   }
   public int getHP() {
     return hp;
+  }
+  
+  public int getVel() {
+    return 10*hp;
   }
   public PImage getImg() {
     return bloon;
