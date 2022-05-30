@@ -38,12 +38,12 @@ public class Path {
 
     int newPathIndex = currBloon.getVel() + currentPathIndex; //newPath is where it will land on
 
-    if (newPathIndex >= paths.size()) {
+    if (newPathIndex >= paths.size()) { //this only triggers when the bloon reaches the end
       Path currPath = paths.get(currentPathIndex);
       currPath.removeBloon(currBloon);
       
-      lives -= currBloon.getVel();
-    } else {
+      lives -= currBloon.getHP();
+    } else { //triggers for moving the bloon
       Path newPath = paths.get(newPathIndex);
       Path currPath = paths.get(currentPathIndex);
 
