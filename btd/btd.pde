@@ -9,6 +9,8 @@ Round one;
 ArrayList<Integer> bindex = new ArrayList<Integer>();
 boolean roundStarted = false;
 StartButton button = new StartButton(50, 850);
+
+int previousBindexLength;
 void setup() {
   tick = 0;
   size(1400, 1000);
@@ -38,12 +40,19 @@ void draw() {
   shopping.display();
   map.display();
 
-  //round is over when bindex == 0;
+  //round is over when bindex == 0 AND the previous bindex was greater than 0;
   if (roundStarted) {
     one.start();
     one.move();
+    
+    if (bindex.size() == 0 && previousBindexLength > 0) {
+      roundStarted = false;
+      button.unClick();
+    }
+    previousBindexLength = bindex.size();
   }
   button.display();
+  
   
 }
 

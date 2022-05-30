@@ -19,6 +19,10 @@ public class StartButton {
       roundStarted = true;
     }
   }
+  
+  void unClick() {
+    clicked = false;
+  }
 
   boolean overRect() {
     return mouseX >= x && mouseX <= x+dimY && mouseY >= y && mouseY <= y+dimX;
