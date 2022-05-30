@@ -31,19 +31,19 @@ public class Path {
       b.add(other.get(i));
   }
 
-  public void move(int currentPathIndex) {
+  public void move(int currentPathIndex) { 
     //currentPath is where this is currently
     Bloon currBloon = b.get(0);
 
 
     int newPathIndex = currBloon.getVel() + currentPathIndex; //newPath is where it will land on
 
-    if (newPathIndex >= paths.size()) {
+    if (newPathIndex >= paths.size()) { //this only triggers when the bloon reaches the end
       Path currPath = paths.get(currentPathIndex);
       currPath.removeBloon(currBloon);
       
-      
-    } else {
+      lives -= currBloon.getHP();
+    } else { //triggers for moving the bloon
       Path newPath = paths.get(newPathIndex);
       Path currPath = paths.get(currentPathIndex);
 
@@ -60,12 +60,13 @@ public class Path {
   }
 
   public void display(Bloon other) {
-    image(other.getImg(), x, y);
+    image(other.getImg(), x-25, y-25);
   }
 
-  public void display() {
-    for (int i = 0; i<b.size(); i++) {
-      display(b.get(i));
-    }
-  }
+
+ public void display(){
+   for(int i = 0; i<b.size(); i++){
+     display(b.get(i));
+   }
+ }
 }
