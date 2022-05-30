@@ -6,7 +6,7 @@ PImage or;
 ArrayList<Bloon> round1 = new ArrayList<Bloon>();
 int tick;
 Round one;
-
+ArrayList<Integer> bindex = new ArrayList<Integer>();
 
 void setup() {
   tick = 0;
