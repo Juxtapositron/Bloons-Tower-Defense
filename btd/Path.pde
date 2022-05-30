@@ -31,7 +31,7 @@ public class Path {
       b.add(other.get(i));
   }
 
-  public void move(int currentPathIndex) {
+  public void move(int currentPathIndex) { 
     //currentPath is where this is currently
     Bloon currBloon = b.get(0);
 
@@ -42,7 +42,7 @@ public class Path {
       Path currPath = paths.get(currentPathIndex);
       currPath.removeBloon(currBloon);
       
-      
+      lives -= currBloon.getVel();
     } else {
       Path newPath = paths.get(newPathIndex);
       Path currPath = paths.get(currentPathIndex);

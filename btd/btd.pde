@@ -31,6 +31,7 @@ void draw() {
   shopping.display();
   map.display();
 
+
   one.start();
   one.move();
 }
