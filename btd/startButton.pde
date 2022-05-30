@@ -16,6 +16,7 @@ public class StartButton {
   void onClick() {
     if (overRect()) {
       clicked = true;
+      roundStarted = true;
     }
   }
 
@@ -24,17 +25,19 @@ public class StartButton {
   }
 
   void display() {
+    if (!clicked) {
 
-    if (overRect() && !clicked) {
-      fill(38, 165, 52);
-      rect(x, y, dimY, dimX, 20, 20, 20, 20);
-      fill(0);
-      text("Start round", x + dimX/8, y + dimY/4);
-    } else {
-      fill(35, 216, 84);
-      rect(x, y, dimY, dimX, 20, 20, 20, 20);
-      fill(0);
-      text("Start round", x + dimX/8, y + dimY/4);
+      if (overRect()) {
+        fill(38, 165, 52);
+        rect(x, y, dimY, dimX, 20, 20, 20, 20);
+        fill(0);
+        text("Start round", x + dimX/8, y + dimY/4);
+      } else {
+        fill(35, 216, 84);
+        rect(x, y, dimY, dimX, 20, 20, 20, 20);
+        fill(0);
+        text("Start round", x + dimX/8, y + dimY/4);
+      }
     }
   }
 }

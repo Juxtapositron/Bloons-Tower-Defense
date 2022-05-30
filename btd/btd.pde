@@ -40,7 +40,6 @@ void draw() {
 
   //round is over when bindex == 0;
   if (roundStarted) {
-
     one.start();
     one.move();
   }
@@ -50,5 +49,6 @@ void draw() {
 
 void mouseClicked() {
   shopping.mouseClicked();
+  button.onClick();
   System.out.println(mouseX + " " + mouseY);
 }
