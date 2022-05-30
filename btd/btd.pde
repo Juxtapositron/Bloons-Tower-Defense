@@ -5,6 +5,7 @@ ArrayList<Monkey> monkies = new ArrayList<Monkey>();
 PImage or;
 ArrayList<Bloon> round1 = new ArrayList<Bloon>();
 
+Round one;
 
 
 void setup() {
@@ -15,6 +16,12 @@ void setup() {
   or = loadImage("./src/or.jpg");
   or.resize(1000, 1000);
 
+  for (int i = 0; i<20; i++) {
+    //paths.get(0) is the first path, and we are directing every bloon to it
+    Bloon first = new Bloon(1, paths.get(0));
+    round1.add(first);
+  }
+  one = new Round(round1);
 }
 
 void draw() {
@@ -24,15 +31,7 @@ void draw() {
   image(or, 0, 0);
   shopping.display();
   map.display();
-  
-  for (int i = 0; i<20; i++) {
-    //paths.get(0) is the first path, and we are directing every bloon to it
-    Bloon first = new Bloon(1, paths.get(0));
-    round1.add(first);
-  }
-  Round one = new Round(round1);
-  
-  
+
   one.start();
 }
 
