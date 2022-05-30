@@ -5,11 +5,11 @@ ArrayList<Monkey> monkies = new ArrayList<Monkey>();
 PImage or;
 
 int tick;
-Round one;
 ArrayList<Integer> bindex = new ArrayList<Integer>();
 boolean roundStarted = false;
 StartButton button = new StartButton(35, 800);
 
+ArrayList<Round> listOfRounds = new ArrayList<Round>();
 int previousBindexLength;
 void setup() {
   tick = 0;
@@ -22,8 +22,10 @@ void setup() {
   
   
 
-  int[] roundOneBloons = {1, 10};
-  one = new Round(roundOneBloons);
+
+  listOfRounds.add(new Round(new int[] {1, 5})); //this is like saying 5 red bloons
+  listOfRounds.add(new Round(new int[] {1, 10, 2, 5})); //this is like saying 10 red bloons followed by 5 blue bloons
+  
   
   
 }
@@ -38,12 +40,14 @@ void draw() {
 
   //round is over when bindex == 0 AND the previous bindex was greater than 0;
   if (roundStarted) {
-    one.start();
-    one.move();
+    Round upcoming = listOfRounds.get(0);
+    upcoming.start();
+    upcoming.move();
     
     if (bindex.size() == 0 && previousBindexLength > 0) {
       roundStarted = false;
       button.unClick();
+      listOfRounds.remove(0); //dismount the finished round from the list
     }
     previousBindexLength = bindex.size();
   }
