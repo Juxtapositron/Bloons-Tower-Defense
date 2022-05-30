@@ -16,9 +16,14 @@ void setup() {
 
   or = loadImage("./src/or.jpg");
   or.resize(1000, 1000);
-  for(int i = 0; i<20; i++){
-  Bloon first = new Bloon(1, paths.get(0));
-  round1.add(first);
+  for (int i = 0; i<10; i++) {
+    Bloon first = new Bloon(1, paths.get(0));
+    round1.add(first);
+  }
+  
+  for (int i = 0; i<10; i++) {
+    Bloon first = new Bloon(2, paths.get(0));
+    round1.add(first);
   }
   one = new Round(round1);
 }
