@@ -73,4 +73,9 @@ public class Bloon {
   public float[] location() {
     return new float[]{x, y};
   }
+  public float[] setLocation(float[] newLoc){
+    x = newLoc[0];
+    y = newLoc[1];
+    return newLoc;
+  }
 }

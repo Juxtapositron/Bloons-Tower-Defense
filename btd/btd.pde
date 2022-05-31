@@ -71,6 +71,7 @@ void draw() {
         roundStarted = false;
         button.unClick();
         listOfRounds.remove(0); //dismount the finished round from the list
+        money += 100;
         map.progress();
         if (listOfRounds.size() == 0) { //VICTORY, NO ROUNDS LEFT
           victory = true;

@@ -51,7 +51,7 @@ public class Path {
 
         newPath.addBloon(currBloon);
         currPath.removeBloon(currBloon);
-
+        currBloon.setLocation(newPath.location());
         bindex.add(newPathIndex);
       }
     }
