@@ -1,6 +1,6 @@
 public class Monkey {
-  float attackRadius;
-  float attackSpeed;
+  float attackRadius = 200;
+  float attackSpeed = 15;
   float price;
   float damage;
   PImage photo;
@@ -31,12 +31,41 @@ public class Monkey {
     image(photo, getWhereX(), getWhereY());
   }
   
-  public Path targetBloon(){
-    for (int i = paths.size()-1; i>=0; i--){
-      Path target = paths.get(i);
-      if (target.size() > 0 && dist(getWhereX(), getWhereY(), target.location()[0], target.location()[1]) <= attackRadius)
-      return paths.get(i);
+  public int targetBloon() {
+    for (int i = bindex.size()-1; i>=0; i--) {
+      int targetPath = bindex.get(i);
+
+      Path target = paths.get(targetPath);
+      //println("distance from this to path " + i + " is " + dist(getWhereX(), getWhereY(), target.location()[0], target.location()[1]) + " away");
+      if (dist(getWhereX(), getWhereY(), target.location()[0], target.location()[1]) <= attackRadius) {
+        //println("hi");
+        return i;
+      }
     }
-    return null;
+    return -1;
+  }
+  
+  public void attack() {
+    int bIndexTargetIndex = targetBloon();
+    if (bIndexTargetIndex != -1) {
+        
+      int PathNumber = bindex.get(bIndexTargetIndex);
+      Path targetPath = paths.get(PathNumber);
+      
+      if (targetPath != null) {
+        ArrayList<Bloon> targetBloons = targetPath.b;
+        for (int i = 0; i < targetBloons.size(); i++) {
+          Bloon target = targetBloons.get(i);
+          int hp = target.deplete();
+          
+          if (hp == 0) {
+            targetPath.removeBloon(target);
+            if (targetPath.size() == 0) {
+              bindex.remove(bIndexTargetIndex);
+            }
+          }
+        }
+      }
+    }
   }
 }
