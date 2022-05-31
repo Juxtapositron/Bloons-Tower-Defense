@@ -1,6 +1,6 @@
 public class Monkey {
   float attackRadius = 150;
-  float attackSpeed = 18;
+  float attackSpeed = 16;
   float price;
   float damage;
   PImage photo;

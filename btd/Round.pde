@@ -27,7 +27,7 @@ public class Round {
       Bloon current = bloons.get(0);
 
 
-      if (tick%35 == 0) {
+      if (tick%10 == 0) {
 
         bloons.remove(0);
         beginning.addBloon(current);
