@@ -8,7 +8,8 @@ boolean roundStarted = false;
 ArrayList<Round> listOfRounds = new ArrayList<Round>();
 boolean victory = false;
 boolean lost = false;
-
+ArrayList<Monkey> monkies = new ArrayList<Monkey>();
+public ArrayList<Path> paths = new ArrayList<Path>();
 void setup() {
   tick = 0;
   size(1400, 1000);
