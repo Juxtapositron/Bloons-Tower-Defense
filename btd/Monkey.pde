@@ -70,6 +70,7 @@ public class Monkey {
         ArrayList<Bloon> targetBloons = targetPath.b;
         for (int i = 0; i < targetBloons.size(); i++) {
           Bloon target = targetBloons.get(i);
+          line(getWhereX(), getWhereY(), target.location()[0], target.location()[1]);
           int hp = target.deplete();
 
           if (hp == 0) {
