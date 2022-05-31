@@ -42,4 +42,4 @@ Below is a set of instructions.
 
 Click once on the dart monkey under the text "Monkey Shop". This should drag a Dart Monkey, which you can then place anywhere on the map as long as there is no Dart Monkey that has been placed nearby. This action costs $200, and can be done any time during gameplay (even between rounds).
 
-To start each round, click the "Start Round" button. When it appears again, the round has ended, and you need to start the next round. Repeat until loss/victory.
+To start each round, click the "Start Round" button. When it appears again, the round has ended, and you need to start the next round. Repeat until loss/victory. Game currently contains 10 rounds of easy difficulty.

@@ -72,7 +72,7 @@ public class Monkey {
           Bloon target = targetBloons.get(i);
           line(getWhereX(), getWhereY(), target.location()[0], target.location()[1]);
           int hp = target.deplete();
-          money += 10;
+          money += 1;
 
           if (hp == 0) {
             targetPath.removeBloon(target);
