@@ -9,7 +9,7 @@ public class Monkey {
   float y;
   float whereX;
   float whereY;
-
+  float angle= 0;
   public Monkey(String img, float _x, float _y) {
     photo = loadImage(img);
     photo.resize(dim, dim);
@@ -28,9 +28,19 @@ public class Monkey {
   }
   void display() {
     tint(255);
-    image(photo, getWhereX(), getWhereY());
+    imageMode(CENTER);
+    image(photo, X, Y);
+    pushMatrix(); // remember current drawing matrix
+    translate(x, y);
+    println(angle);
+    rotate(radians(angle + 270)); // rotate 45 degrees
+    image(photo, 0, 0);
+    popMatrix();
+    imageMode(CORNER);
   }
-
+  float getAngle(float pX1, float pY1, float pX2, float pY2) {
+    return atan2(pY2 - pY1, pX2 - pX1)* 180/ PI;
+  }
   public int targetBloon() {
     for (int i = bindex.size()-1; i>=0; i--) {
       int targetPath = bindex.get(i);
@@ -39,25 +49,29 @@ public class Monkey {
       //println("distance from this to path " + i + " is " + dist(getWhereX(), getWhereY(), target.location()[0], target.location()[1]) + " away");
       if (dist(getWhereX(), getWhereY(), target.location()[0], target.location()[1]) <= attackRadius) {
         //println("hi");
+
+       
+        angle = getAngle(target.location()[0], target.location()[1], getWhereX(), getWhereY());
+        
         return i;
       }
     }
     return -1;
   }
-  
+
   public void attack() {
     int bIndexTargetIndex = targetBloon();
     if (bIndexTargetIndex != -1) {
-        
+
       int PathNumber = bindex.get(bIndexTargetIndex);
       Path targetPath = paths.get(PathNumber);
-      
+
       if (targetPath != null) {
         ArrayList<Bloon> targetBloons = targetPath.b;
         for (int i = 0; i < targetBloons.size(); i++) {
           Bloon target = targetBloons.get(i);
           int hp = target.deplete();
-          
+
           if (hp == 0) {
             targetPath.removeBloon(target);
             if (targetPath.size() == 0) {
