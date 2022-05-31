@@ -56,6 +56,20 @@ public class Bloon {
       x = 0; 
       y = 0;
     }
+    
+    
+    if (hp == 5)
+      bloon = loadImage("Pink.png");
+    if (hp == 4)
+      bloon = loadImage("Yellow.png");
+    if (hp == 3)
+      bloon = loadImage("Green.png");
+    if (hp == 2)
+      bloon = loadImage("Blue.png");
+    if (hp == 1)
+      bloon = loadImage("Red.png");
+    bloon.resize(50, 50);
+
     return hp;
   }
 

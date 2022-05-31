@@ -1,7 +1,5 @@
 Shop shopping;
 Map map;
-public ArrayList<Path> paths = new ArrayList<Path>();
-ArrayList<Monkey> monkies = new ArrayList<Monkey>();
 PImage or;
 StartButton button = new StartButton(35, 800);
 
