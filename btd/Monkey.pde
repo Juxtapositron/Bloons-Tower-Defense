@@ -10,6 +10,7 @@ public class Monkey {
   float whereX;
   float whereY;
   float angle= 0;
+  int mtick;
   public Monkey(String img, float _x, float _y) {
     photo = loadImage(img);
     photo.resize(dim, dim);
@@ -17,6 +18,7 @@ public class Monkey {
     y = _y;
     whereX = x-dim/2;
     whereY = y-dim/2;
+    mtick = (int) attackSpeed;
   }
 
   float getWhereX() {
@@ -50,9 +52,9 @@ public class Monkey {
       if (dist(getWhereX(), getWhereY(), target.location()[0], target.location()[1]) <= attackRadius) {
         //println("hi");
 
-       
+
         angle = getAngle(target.location()[0], target.location()[1], getWhereX(), getWhereY());
-        
+
         return i;
       }
     }
@@ -60,28 +62,35 @@ public class Monkey {
   }
 
   public void attack() {
-    int bIndexTargetIndex = targetBloon();
-    if (bIndexTargetIndex != -1) {
+    if (mtick % attackSpeed == 0) { //attack cooldown
+       
+      int bIndexTargetIndex = targetBloon();
+      if (bIndexTargetIndex != -1) {
 
-      int PathNumber = bindex.get(bIndexTargetIndex);
-      Path targetPath = paths.get(PathNumber);
+        int PathNumber = bindex.get(bIndexTargetIndex);
+        Path targetPath = paths.get(PathNumber);
 
-      if (targetPath != null) {
-        ArrayList<Bloon> targetBloons = targetPath.b;
-        for (int i = 0; i < targetBloons.size(); i++) {
-          Bloon target = targetBloons.get(i);
-          line(x, y, target.location()[0], target.location()[1]);
-          int hp = target.deplete();
-          money += 1;
+        if (targetPath != null) {
+          ArrayList<Bloon> targetBloons = targetPath.b;
+          for (int i = 0; i < targetBloons.size(); i++) {
+            Bloon target = targetBloons.get(i);
+            line(x, y, target.location()[0], target.location()[1]);
+            int hp = target.deplete();
+            money += 1;
 
-          if (hp == 0) {
-            targetPath.removeBloon(target);
-            if (targetPath.size() == 0) {
-              bindex.remove(bIndexTargetIndex);
+            if (hp == 0) {
+              targetPath.removeBloon(target);
+              if (targetPath.size() == 0) {
+                bindex.remove(bIndexTargetIndex);
+              }
             }
           }
         }
+      } else {
+        //this case is when there are no targets to shoot
+        mtick = (int) attackSpeed -1;
       }
     }
+    mtick++;
   }
 }
