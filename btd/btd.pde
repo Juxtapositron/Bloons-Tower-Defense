@@ -22,6 +22,7 @@ void setup() {
 }
 
 void draw() {
+  println(paths.size());
   if (lives <= 0) {
     lost = true;
     lives = 0;
@@ -41,7 +42,7 @@ void draw() {
       upcoming.start();
       upcoming.move();
 
-      
+
       if (bindex.size() == 0 && previousBindexLength > 0) {
         //round is over when bindex == 0 AND the previous bindex was greater than 0;
         roundStarted = false;

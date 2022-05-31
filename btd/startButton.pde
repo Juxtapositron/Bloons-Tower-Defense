@@ -7,7 +7,7 @@ public class StartButton {
 
   boolean clicked = false;
   boolean overlap = false;
-  int b = 0;
+
   public StartButton(float _x, float _y) {
     x = _x;
     y = _y;
