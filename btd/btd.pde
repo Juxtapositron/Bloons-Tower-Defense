@@ -3,7 +3,7 @@ Map map;
 public ArrayList<Path> paths = new ArrayList<Path>();
 ArrayList<Monkey> monkies = new ArrayList<Monkey>();
 PImage or;
-
+int RoundNumber;
 int tick;
 ArrayList<Integer> bindex = new ArrayList<Integer>();
 boolean roundStarted = false;
@@ -15,6 +15,7 @@ boolean victory = false;
 boolean lost = false;
 void setup() {
   tick = 0;
+  RoundNumber = 1;
   size(1400, 1000);
   shopping = new Shop();
   map = new Map();
@@ -28,8 +29,8 @@ void setup() {
 
 void draw() {
   if (lives <= 0) {
-    lost = true;
     lives = 0;
+    lost = true;
   }
   if (!victory && !lost) {
     tick++;
@@ -38,11 +39,12 @@ void draw() {
     image(or, 0, 0);
     shopping.display();
     map.display();
+    text(RoundNumber, 0, 0);
 
 
 
     if (roundStarted) {
-      Round upcoming = listOfRounds.get(0);
+      Round upcoming = listOfRounds.get(RoundNumber - 1);
       upcoming.start();
       upcoming.move();
 
@@ -51,8 +53,8 @@ void draw() {
         //round is over when bindex == 0 AND the previous bindex was greater than 0;
         roundStarted = false;
         button.unClick();
-        listOfRounds.remove(0); //dismount the finished round from the list
-
+        listOfRounds.remove(RoundNumber - 1); //dismount the finished round from the list
+        RoundNumber++;
         if (listOfRounds.size() == 0) { //VICTORY, NO ROUNDS LEFT
           victory = true;
 
