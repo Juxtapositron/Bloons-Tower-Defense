@@ -64,7 +64,7 @@ void draw() {
         }
       }
 
-      if (bindex.size() == 0 && previousBindexLength > 0) {
+      if (bindex.size() == 0 && previousBindexLength > 0 && upcoming.bloons.size() == 0) {
         //round is over when bindex == 0 AND the previous bindex was greater than 0;
         roundStarted = false;
         button.unClick();
