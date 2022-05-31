@@ -1,6 +1,6 @@
 public class Monkey {
-  float attackRadius = 200;
-  float attackSpeed = 15;
+  float attackRadius = 150;
+  float attackSpeed = 18;
   float price;
   float damage;
   PImage photo;
@@ -9,7 +9,7 @@ public class Monkey {
   float y;
   float whereX;
   float whereY;
-  
+
   public Monkey(String img, float _x, float _y) {
     photo = loadImage(img);
     photo.resize(dim, dim);
@@ -18,11 +18,11 @@ public class Monkey {
     whereX = x-dim/2;
     whereY = y-dim/2;
   }
- 
+
   float getWhereX() {
     return whereX;
   }
-  
+
   float getWhereY() {
     return whereY;
   }
@@ -30,7 +30,7 @@ public class Monkey {
     tint(255);
     image(photo, getWhereX(), getWhereY());
   }
-  
+
   public int targetBloon() {
     for (int i = bindex.size()-1; i>=0; i--) {
       int targetPath = bindex.get(i);

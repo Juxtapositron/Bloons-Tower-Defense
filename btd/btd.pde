@@ -51,6 +51,13 @@ void draw() {
       upcoming.start();
       upcoming.move();
 
+      for (int i = 0; i < monkies.size(); i++) {
+        Monkey m = monkies.get(i);
+        if (tick % m.attackSpeed == 0) {
+          m.attack();
+        }
+      }
+
       if (bindex.size() == 0 && previousBindexLength > 0) {
         //round is over when bindex == 0 AND the previous bindex was greater than 0;
         roundStarted = false;
@@ -90,5 +97,5 @@ void draw() {
 void mouseClicked() {
   shopping.mouseClicked();
   button.onClick();
-  System.out.println(mouseX + " " + mouseY);
+  //System.out.println(mouseX + " " + mouseY);
 }
