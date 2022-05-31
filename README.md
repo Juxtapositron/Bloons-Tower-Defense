@@ -27,4 +27,9 @@ Kevin (5/26) : I updated the code I created earlier to follow OOP standards bett
 
 Shadman (5/26) : Started the creation of Round 1. Made a working move method, and should be done coding both paths and bloons.
 
-Shadman (5/29) : Round 1 is finished. Need to find a better solution to move, very bad O(n^2). 
+
+Shadman (5/29) : Round 1 is finished. Need to find a better solution to move, very bad O(n^2).
+
+Kevin (5/29) : Fixed code to have bloons moving in a stable path. I added lives counter and support for losing lives, and a roundstart button.
+
+Kevin (5/30) : I implemented a cleaner solution to adding bloons to each round, and made the rounds compatible with the roundstart button. I also added support for winning and losing screens when the rounds hit zero or the lives hit zero respectively.
