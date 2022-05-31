@@ -106,7 +106,7 @@ public class Map {
     }
     textSize(30);
     fill(0,0,0);
-    text(RoundNumber, 0, 0);
+    text("Round "+ RoundNumber, 10, 40);
     fill(255, 0, 0);
     text(lives + "❤", 10, 990);
   }

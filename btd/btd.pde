@@ -52,14 +52,14 @@ void draw() {
       Round upcoming = listOfRounds.get(0);
       upcoming.start();
       upcoming.move();
-      map.progress();
+      
       
       if (bindex.size() == 0 && previousBindexLength > 0) {
         //round is over when bindex == 0 AND the previous bindex was greater than 0;
         roundStarted = false;
         button.unClick();
         listOfRounds.remove(0); //dismount the finished round from the list
-        RoundNumber++;
+        map.progress();
         if (listOfRounds.size() == 0) { //VICTORY, NO ROUNDS LEFT
           victory = true;
 
