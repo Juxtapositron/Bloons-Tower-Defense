@@ -29,9 +29,10 @@ public class PurchaseMonkey {
 
           clicked = !clicked;
 
-          if (!overlap) {
+          if (!overlap && price<=money) {
             Monkey m = new Monkey(placeURL, mouseX, mouseY);
             monkies.add(m);
+            money = money - (int)price;
           }
         }
       }

@@ -1,5 +1,6 @@
 Shop shopping;
 Map map;
+int money;
 PImage or;
 StartButton button = new StartButton(35, 800);
 
@@ -23,9 +24,9 @@ void setup() {
   listOfRounds.add(new Round(new int[] {1, 10, 2, 5})); //this is like saying 10 red bloons followed by 5 blue bloons
   
   
-  listOfRounds.add(new Round(new int[] {1, 5, 2, 10}));
-  listOfRounds.add(new Round(new int[] {5, 300})); //demo for loss
-  /*
+  listOfRounds.add(new Round(new int[] {1, 10}));
+  listOfRounds.add(new Round(new int[] {1, 5, 2, 10})); 
+
   listOfRounds.add(new Round(new int[] {2, 15}));
   
   listOfRounds.add(new Round(new int[] {1, 5, 2, 5, 3, 5})); 
@@ -34,7 +35,7 @@ void setup() {
   listOfRounds.add(new Round(new int[] {3, 5, 4, 5}));
   listOfRounds.add(new Round(new int[] {4, 10}));
   listOfRounds.add(new Round(new int[] {5, 5}));
-  */
+ 
 }
 
 void draw() {
