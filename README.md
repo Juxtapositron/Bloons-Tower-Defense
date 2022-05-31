@@ -26,3 +26,5 @@ Shadman (5/25) : Received word that Path should really contain a Bloon array. Re
 Kevin (5/26) : I updated the code I created earlier to follow OOP standards better. I also did the colison functionality so that a monkey cannot be placed on top of a path
 
 Shadman (5/26) : Started the creation of Round 1. Made a working move method, and should be done coding both paths and bloons.
+
+Shadman (5/29) : Round 1 is finished. Need to find a better solution to move, very bad O(n^2). 
