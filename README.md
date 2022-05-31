@@ -32,3 +32,5 @@ Shadman (5/29) : Round 1 is finished. Need to find a better solution to move, ve
 Kevin (5/29) : Fixed code to have bloons moving in a stable path. I added lives counter and support for losing lives, and a roundstart button.
 
 Kevin (5/30) : I implemented a cleaner solution to adding bloons to each round, and made the rounds compatible with the roundstart button. I also added support for winning and losing screens when the rounds hit zero or the lives hit zero respectively.
+
+Shadman (5/30): Working on Monkey class. Had to finish in one day to get to MVP, so rushed an incomplete version. Should be at MVP, due to help from Kevin. Also created all ten rounds, and added round number global variable.
