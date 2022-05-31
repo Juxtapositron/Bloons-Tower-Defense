@@ -1,6 +1,6 @@
 ArrayList<int[]> pivots = new ArrayList<int[]>();
 int lives = 200;
-
+int RoundNumber = 1;
 public class Map {
   
   public Map() {
@@ -29,7 +29,9 @@ public class Map {
     
     fillPath();
   }
-  
+  void progress(){
+    RoundNumber++;
+  }
   void addPivot(int x , int y) {
     int[] pivot = {x, y};
     pivots.add(pivot);
@@ -103,6 +105,8 @@ public class Map {
       
     }
     textSize(30);
+    fill(0,0,0);
+    text(RoundNumber, 0, 0);
     fill(255, 0, 0);
     text(lives + "❤", 10, 990);
   }

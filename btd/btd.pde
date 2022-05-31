@@ -3,7 +3,6 @@ Map map;
 public ArrayList<Path> paths = new ArrayList<Path>();
 ArrayList<Monkey> monkies = new ArrayList<Monkey>();
 PImage or;
-int RoundNumber;
 int tick;
 ArrayList<Integer> bindex = new ArrayList<Integer>();
 boolean roundStarted = false;
@@ -15,7 +14,6 @@ boolean victory = false;
 boolean lost = false;
 void setup() {
   tick = 0;
-  RoundNumber = 1;
   size(1400, 1000);
   shopping = new Shop();
   map = new Map();
@@ -23,8 +21,16 @@ void setup() {
   or = loadImage("./src/or.jpg"); //loads the map in
   or.resize(1000, 1000);
 
-  listOfRounds.add(new Round(new int[] {5, 100})); //this is like saying 5 red bloons
+  listOfRounds.add(new Round(new int[] {1, 15})); //this is like saying 15 red bloons
   listOfRounds.add(new Round(new int[] {1, 10, 2, 5})); //this is like saying 10 red bloons followed by 5 blue bloons
+  listOfRounds.add(new Round(new int[] {1, 5, 2, 10})); 
+  listOfRounds.add(new Round(new int[] {2, 15}));
+  listOfRounds.add(new Round(new int[] {1, 5, 2, 5, 3, 5})); 
+  listOfRounds.add(new Round(new int[] {2, 5, 3, 10})); 
+  listOfRounds.add(new Round(new int[] {3, 15})); 
+  listOfRounds.add(new Round(new int[] {3, 5, 4, 5}));
+  listOfRounds.add(new Round(new int[] {4, 10}));
+  listOfRounds.add(new Round(new int[] {5, 5}));
 }
 
 void draw() {
@@ -39,21 +45,20 @@ void draw() {
     image(or, 0, 0);
     shopping.display();
     map.display();
-    text(RoundNumber, 0, 0);
 
 
 
     if (roundStarted) {
-      Round upcoming = listOfRounds.get(RoundNumber - 1);
+      Round upcoming = listOfRounds.get(0);
       upcoming.start();
       upcoming.move();
-
+      map.progress();
       
       if (bindex.size() == 0 && previousBindexLength > 0) {
         //round is over when bindex == 0 AND the previous bindex was greater than 0;
         roundStarted = false;
         button.unClick();
-        listOfRounds.remove(RoundNumber - 1); //dismount the finished round from the list
+        listOfRounds.remove(0); //dismount the finished round from the list
         RoundNumber++;
         if (listOfRounds.size() == 0) { //VICTORY, NO ROUNDS LEFT
           victory = true;
