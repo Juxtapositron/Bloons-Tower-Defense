@@ -30,4 +30,13 @@ public class Monkey {
     tint(255);
     image(photo, getWhereX(), getWhereY());
   }
+  
+  public Path targetBloon(){
+    for (int i = paths.size()-1; i>=0; i--){
+      Path target = paths.get(i);
+      if (target.size() > 0 && dist(getWhereX(), getWhereY(), target.location()[0], target.location()[1]) <= attackRadius)
+      return paths.get(i);
+    }
+    return null;
+  }
 }
