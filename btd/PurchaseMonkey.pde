@@ -67,6 +67,7 @@ public class PurchaseMonkey {
         tint(255);
       }
       image(photo, where, y);
+      
       tint(255);
     } else {
 
@@ -78,9 +79,11 @@ public class PurchaseMonkey {
       } else {
         tint(255);
       }
-
-
+      fill(0, 0, 0, 50);
+      ellipse(mouseX, mouseY, 300, 300);
+      imageMode(CENTER);
       image(photo, mouseX, mouseY);
+      imageMode(CORNER);
     }
   }
 }
