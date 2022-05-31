@@ -45,7 +45,7 @@ public class Bloon {
   }
 
   public int getVel() {
-    return hp * 2;
+    return hp * 4;
   }
   public PImage getImg() {
     return bloon;
@@ -72,5 +72,10 @@ public class Bloon {
 
   public float[] location() {
     return new float[]{x, y};
+  }
+  public float[] setLocation(float[] newLoc){
+    x = newLoc[0];
+    y = newLoc[1];
+    return newLoc;
   }
 }
