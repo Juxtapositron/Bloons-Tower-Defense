@@ -56,7 +56,7 @@ void draw() {
       for (int i = 0; i < monkies.size(); i++) {
         Monkey m = monkies.get(i);
         m.attack();
-        println(m.mtick);
+        //println(m.mtick);
       }
 
       if (bindex.size() == 0 && previousBindexLength > 0 && upcoming.bloons.size() == 0) {

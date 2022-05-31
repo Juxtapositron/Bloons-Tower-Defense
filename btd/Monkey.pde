@@ -34,7 +34,7 @@ public class Monkey {
     image(photo, X, Y);
     pushMatrix(); // remember current drawing matrix
     translate(x, y);
-    println(angle);
+    //println(angle);
     rotate(radians(angle + 270)); // rotate 45 degrees
     image(photo, 0, 0);
     popMatrix();
@@ -44,6 +44,10 @@ public class Monkey {
     return atan2(pY2 - pY1, pX2 - pX1)* 180/ PI;
   }
   public int targetBloon() {
+    int greatestPath = 0;
+    int indexWithGreatestPath = -1;
+    float angleWithGreatestPath = 0;
+    
     for (int i = bindex.size()-1; i>=0; i--) {
       int targetPath = bindex.get(i);
 
@@ -52,13 +56,22 @@ public class Monkey {
       if (dist(getWhereX(), getWhereY(), target.location()[0], target.location()[1]) <= attackRadius) {
         //println("hi");
 
-
-        angle = getAngle(target.location()[0], target.location()[1], getWhereX(), getWhereY());
-
-        return i;
+        if (targetPath > greatestPath) {
+          greatestPath = targetPath;
+          indexWithGreatestPath = i;
+          angleWithGreatestPath = getAngle(target.location()[0], target.location()[1], getWhereX(), getWhereY());
+        }
+        
+        
       }
     }
-    return -1;
+    if (greatestPath == -1) {
+      return -1;
+    } else {
+      angle = angleWithGreatestPath;
+      return indexWithGreatestPath;
+    }
+    
   }
 
   public void attack() {
