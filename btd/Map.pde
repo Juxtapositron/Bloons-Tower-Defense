@@ -1,6 +1,14 @@
+public ArrayList<Path> paths = new ArrayList<Path>();
 ArrayList<int[]> pivots = new ArrayList<int[]>();
+
+ArrayList<Integer> bindex = new ArrayList<Integer>();
+int previousBindexLength; //how many bloons are left
+
+ArrayList<Monkey> monkies = new ArrayList<Monkey>();
+
 int lives = 200;
 
+PImage mapImage;
 public class Map {
   
   public Map() {

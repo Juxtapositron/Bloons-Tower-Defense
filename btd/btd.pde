@@ -1,32 +1,28 @@
 Shop shopping;
 Map map;
-public ArrayList<Path> paths = new ArrayList<Path>();
-ArrayList<Monkey> monkies = new ArrayList<Monkey>();
-PImage or;
-
-int tick;
-ArrayList<Integer> bindex = new ArrayList<Integer>();
-boolean roundStarted = false;
 StartButton button = new StartButton(35, 800);
 
+int tick;
+boolean roundStarted = false;
 ArrayList<Round> listOfRounds = new ArrayList<Round>();
-int previousBindexLength;
 boolean victory = false;
 boolean lost = false;
+
 void setup() {
   tick = 0;
   size(1400, 1000);
   shopping = new Shop();
   map = new Map();
 
-  or = loadImage("./src/or.jpg"); //loads the map in
-  or.resize(1000, 1000);
+  mapImage = loadImage("./src/or.jpg"); //loads the map in
+  mapImage.resize(1000, 1000);
 
   listOfRounds.add(new Round(new int[] {5, 100})); //this is like saying 5 red bloons
   listOfRounds.add(new Round(new int[] {1, 10, 2, 5})); //this is like saying 10 red bloons followed by 5 blue bloons
 }
 
 void draw() {
+  println(paths.size());
   if (lives <= 0) {
     lost = true;
     lives = 0;
@@ -35,7 +31,7 @@ void draw() {
     tick++;
     background(255);
 
-    image(or, 0, 0);
+    image(mapImage, 0, 0);
     shopping.display();
     map.display();
 
@@ -46,7 +42,7 @@ void draw() {
       upcoming.start();
       upcoming.move();
 
-      
+
       if (bindex.size() == 0 && previousBindexLength > 0) {
         //round is over when bindex == 0 AND the previous bindex was greater than 0;
         roundStarted = false;
@@ -59,7 +55,7 @@ void draw() {
           //this code is to remove the pesky bloon that doesn't disappear right away
           bindex = new ArrayList<Integer>();
           background(255);
-          image(or, 0, 0);
+          image(mapImage, 0, 0);
           shopping.display();
           map.display();
         }
@@ -77,7 +73,7 @@ void draw() {
     }
     if (lost) {
       fill(250, 3, 60); //red lost
-      textSize(300);
+      textSize(280);
       text("YOU LOST", 10, 600);
     }
   }
