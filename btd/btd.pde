@@ -1,7 +1,5 @@
 Shop shopping;
 Map map;
-public ArrayList<Path> paths = new ArrayList<Path>();
-ArrayList<Monkey> monkies = new ArrayList<Monkey>();
 PImage or;
 StartButton button = new StartButton(35, 800);
 
@@ -10,7 +8,8 @@ boolean roundStarted = false;
 ArrayList<Round> listOfRounds = new ArrayList<Round>();
 boolean victory = false;
 boolean lost = false;
-
+ArrayList<Monkey> monkies = new ArrayList<Monkey>();
+public ArrayList<Path> paths = new ArrayList<Path>();
 void setup() {
   tick = 0;
   size(1400, 1000);
@@ -22,18 +21,24 @@ void setup() {
 
   listOfRounds.add(new Round(new int[] {1, 15})); //this is like saying 15 red bloons
   listOfRounds.add(new Round(new int[] {1, 10, 2, 5})); //this is like saying 10 red bloons followed by 5 blue bloons
-  listOfRounds.add(new Round(new int[] {1, 5, 2, 10})); 
+  
+  
+  listOfRounds.add(new Round(new int[] {1, 5, 2, 10}));
+  listOfRounds.add(new Round(new int[] {5, 300})); //demo for loss
+  /*
   listOfRounds.add(new Round(new int[] {2, 15}));
+  
   listOfRounds.add(new Round(new int[] {1, 5, 2, 5, 3, 5})); 
   listOfRounds.add(new Round(new int[] {2, 5, 3, 10})); 
   listOfRounds.add(new Round(new int[] {3, 15})); 
   listOfRounds.add(new Round(new int[] {3, 5, 4, 5}));
   listOfRounds.add(new Round(new int[] {4, 10}));
   listOfRounds.add(new Round(new int[] {5, 5}));
+  */
 }
 
 void draw() {
-  println(paths.size());
+  //println(paths.size());
   if (lives <= 0) {
     lives = 0;
     lost = true;
@@ -53,7 +58,14 @@ void draw() {
       upcoming.start();
       upcoming.move();
 
-      if (bindex.size() == 0 && previousBindexLength > 0) {
+      for (int i = 0; i < monkies.size(); i++) {
+        Monkey m = monkies.get(i);
+        if (tick % m.attackSpeed == 0) {
+          m.attack();
+        }
+      }
+
+      if (bindex.size() == 0 && previousBindexLength > 0 && upcoming.bloons.size() == 0) {
         //round is over when bindex == 0 AND the previous bindex was greater than 0;
         roundStarted = false;
         button.unClick();
@@ -92,5 +104,5 @@ void draw() {
 void mouseClicked() {
   shopping.mouseClicked();
   button.onClick();
-  System.out.println(mouseX + " " + mouseY);
+  //System.out.println(mouseX + " " + mouseY);
 }
