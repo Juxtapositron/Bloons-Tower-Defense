@@ -8,6 +8,7 @@ ArrayList<Monkey> monkies = new ArrayList<Monkey>();
 
 int lives = 200;
 
+int RoundNumber = 1;
 PImage mapImage;
 public class Map {
   
@@ -37,7 +38,9 @@ public class Map {
     
     fillPath();
   }
-  
+  void progress(){
+    RoundNumber++;
+  }
   void addPivot(int x , int y) {
     int[] pivot = {x, y};
     pivots.add(pivot);
@@ -111,6 +114,8 @@ public class Map {
       
     }
     textSize(30);
+    fill(0,0,0);
+    text("Round "+ RoundNumber, 10, 40);
     fill(255, 0, 0);
     text(lives + "❤", 10, 990);
   }

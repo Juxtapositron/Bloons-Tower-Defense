@@ -1,5 +1,8 @@
 Shop shopping;
 Map map;
+public ArrayList<Path> paths = new ArrayList<Path>();
+ArrayList<Monkey> monkies = new ArrayList<Monkey>();
+PImage or;
 StartButton button = new StartButton(35, 800);
 
 int tick;
@@ -17,15 +20,23 @@ void setup() {
   mapImage = loadImage("./src/or.jpg"); //loads the map in
   mapImage.resize(1000, 1000);
 
-  listOfRounds.add(new Round(new int[] {5, 100})); //this is like saying 5 red bloons
+  listOfRounds.add(new Round(new int[] {1, 15})); //this is like saying 15 red bloons
   listOfRounds.add(new Round(new int[] {1, 10, 2, 5})); //this is like saying 10 red bloons followed by 5 blue bloons
+  listOfRounds.add(new Round(new int[] {1, 5, 2, 10})); 
+  listOfRounds.add(new Round(new int[] {2, 15}));
+  listOfRounds.add(new Round(new int[] {1, 5, 2, 5, 3, 5})); 
+  listOfRounds.add(new Round(new int[] {2, 5, 3, 10})); 
+  listOfRounds.add(new Round(new int[] {3, 15})); 
+  listOfRounds.add(new Round(new int[] {3, 5, 4, 5}));
+  listOfRounds.add(new Round(new int[] {4, 10}));
+  listOfRounds.add(new Round(new int[] {5, 5}));
 }
 
 void draw() {
   println(paths.size());
   if (lives <= 0) {
-    lost = true;
     lives = 0;
+    lost = true;
   }
   if (!victory && !lost) {
     tick++;
@@ -42,13 +53,12 @@ void draw() {
       upcoming.start();
       upcoming.move();
 
-
       if (bindex.size() == 0 && previousBindexLength > 0) {
         //round is over when bindex == 0 AND the previous bindex was greater than 0;
         roundStarted = false;
         button.unClick();
         listOfRounds.remove(0); //dismount the finished round from the list
-
+        map.progress();
         if (listOfRounds.size() == 0) { //VICTORY, NO ROUNDS LEFT
           victory = true;
 
