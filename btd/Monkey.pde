@@ -35,7 +35,7 @@ public class Monkey {
     pushMatrix(); // remember current drawing matrix
     translate(x, y);
     //println(angle);
-    rotate(radians(angle + 270)); // rotate 45 degrees
+    rotate(radians(angle)); // rotate 45 degrees
     image(photo, 0, 0);
     popMatrix();
     imageMode(CORNER);
@@ -59,7 +59,7 @@ public class Monkey {
         if (targetPath > greatestPath) {
           greatestPath = targetPath;
           indexWithGreatestPath = i;
-          angleWithGreatestPath = getAngle(target.location()[0], target.location()[1], getWhereX(), getWhereY());
+          angleWithGreatestPath = getAngle(target.location()[0], target.location()[1], getWhereX(), getWhereY()) + 270; //add 270 to get the correct angle
         }
         
         
