@@ -20,7 +20,7 @@ void setup() {
   mapImage = loadImage("./src/or.jpg"); //loads the map in
   mapImage.resize(1000, 1000);
 
-  listOfRounds.add(new Round(new int[] {1, 15})); //this is like saying 15 red bloons
+  listOfRounds.add(new Round(new int[] {5, 40})); //this is like saying 15 red bloons
   listOfRounds.add(new Round(new int[] {1, 10, 2, 5})); //this is like saying 10 red bloons followed by 5 blue bloons
   listOfRounds.add(new Round(new int[] {1, 5, 2, 10}));
   listOfRounds.add(new Round(new int[] {2, 15}));
@@ -41,9 +41,10 @@ void draw() {
   if (!victory && !lost) {
     tick++;
     background(255);
-
+    tint(255);
     image(mapImage, 0, 0);
     shopping.display();
+    
     map.display();
 
 
