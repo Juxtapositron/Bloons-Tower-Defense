@@ -14,6 +14,8 @@ public ArrayList<Path> paths = new ArrayList<Path>();
 void setup() {
   tick = 0;
   size(1400, 1000);
+  
+  
   shopping = new Shop();
   map = new Map();
 
