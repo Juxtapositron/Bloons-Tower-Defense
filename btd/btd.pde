@@ -43,9 +43,10 @@ void draw() {
   if (!victory && !lost) {
     tick++;
     background(255);
-
+    tint(255);
     image(mapImage, 0, 0);
     shopping.display();
+    
     map.display();
 
 
