@@ -53,6 +53,20 @@ public class PurchaseMonkey {
     }
     overlap = false;
   }
+  
+  void overPath() {
+
+    for (int i = 0; i < paths.size(); i++) {
+      Path path = paths.get(i);
+      // dim = 120 for now, so 30 = dim/4
+      if (dist(path.location()[0], path.location()[1], mouseX, mouseY) <= 30)
+      {
+        overlap = true;
+        return;
+      }
+    }
+    overlap = false;
+  }
   boolean overRect() {
     return mouseX >= where && mouseX <= where+dim && mouseY >= y && mouseY <= y+dim;
   }
@@ -60,6 +74,7 @@ public class PurchaseMonkey {
   void display() {
 
     overExisting();
+    overPath();
     if (!clicked) {
       if (overRect()) {
         tint(0, 153, 204);
