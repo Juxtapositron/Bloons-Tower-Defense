@@ -31,7 +31,7 @@ public class Monkey {
   void display() {
     tint(255);
     imageMode(CENTER);
-    image(photo, X, Y);
+    //image(photo, X, Y);
     pushMatrix(); // remember current drawing matrix
     translate(x, y);
     //println(angle);
