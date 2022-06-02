@@ -14,6 +14,9 @@ public class Monkey {
   boolean hovered;
   boolean clicked = false;
   boolean menuShown = false;
+  
+  int MenuX = 1000;
+  int MenuY = 500;
   public Monkey(String img, float _x, float _y) {
     photo = loadImage(img);
     photo.resize(dim, dim);
@@ -134,7 +137,17 @@ public class Monkey {
   }
   
   void showMenu() {
-    rect(1000, 500, 400, 500);
+    rect(MenuX, MenuY, 400, 500);
+    drawX();
+    
+  }
+  
+  void drawX() {
+    int circleSize = 50;
+    
+    ellipseMode(CENTER);
+    fill(255, 0, 0);
+    ellipse(MenuX, MenuY, circleSize, circleSize);
   }
   
 }
