@@ -11,7 +11,7 @@ public class Monkey {
   float whereY;
   float angle= 0;
   int mtick;
-  
+  boolean hovered;
   public Monkey(String img, float _x, float _y) {
     photo = loadImage(img);
     photo.resize(dim, dim);
@@ -30,8 +30,12 @@ public class Monkey {
     return whereY;
   }
   void display() {
-    
-    tint(255);
+    hovered = overRect();
+    if (hovered) {
+      tint(0, 153, 204);
+    } else {
+      tint(255);
+    }
     imageMode(CENTER);
     //image(photo, X, Y);
     pushMatrix(); // remember current drawing matrix
@@ -110,4 +114,16 @@ public class Monkey {
     }
     mtick++;
   }
+  
+  boolean overRect() {
+    return mouseX >= whereX && mouseX <= whereX+dim && mouseY >= whereY && mouseY <= whereY+dim;
+  }
+  
+  void onClick() {
+    if (hovered) {
+      println("clicked");
+    }
+  }
+  
+  
 }
