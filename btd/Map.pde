@@ -3,7 +3,6 @@ ArrayList<int[]> pivots = new ArrayList<int[]>();
 ArrayList<Integer> bindex = new ArrayList<Integer>();
 int previousBindexLength; //how many bloons are left
 
-
 int lives = 200;
 
 int RoundNumber = 1;

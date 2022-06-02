@@ -11,6 +11,7 @@ public class Monkey {
   float whereY;
   float angle= 0;
   int mtick;
+  
   public Monkey(String img, float _x, float _y) {
     photo = loadImage(img);
     photo.resize(dim, dim);
@@ -29,9 +30,10 @@ public class Monkey {
     return whereY;
   }
   void display() {
+    
     tint(255);
     imageMode(CENTER);
-    image(photo, X, Y);
+    //image(photo, X, Y);
     pushMatrix(); // remember current drawing matrix
     translate(x, y);
     //println(angle);
@@ -46,7 +48,7 @@ public class Monkey {
   public int targetBloon() {
     int greatestPath = 0;
     int indexWithGreatestPath = -1;
-    float angleWithGreatestPath = 0;
+    float angleWithGreatestPath = -1;
     
     for (int i = bindex.size()-1; i>=0; i--) {
       int targetPath = bindex.get(i);
@@ -68,7 +70,9 @@ public class Monkey {
     if (greatestPath == -1) {
       return -1;
     } else {
-      angle = angleWithGreatestPath;
+      if (angleWithGreatestPath != -1) {
+        angle = angleWithGreatestPath; //only set it when the angle has changed
+      }
       return indexWithGreatestPath;
     }
     

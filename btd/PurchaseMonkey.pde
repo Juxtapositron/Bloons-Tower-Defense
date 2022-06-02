@@ -69,7 +69,8 @@ public class PurchaseMonkey {
   }
 
   void display() {
-
+    text("$" + (int) price, x + dim/2, y + dim/2 + 12);
+    
     overlapCheck();
     if (!clicked) {
       if (overRect()) {
