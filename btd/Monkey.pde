@@ -12,6 +12,8 @@ public class Monkey {
   float angle= 0;
   int mtick;
   boolean hovered;
+  boolean clicked = false;
+  boolean menuShown = false;
   public Monkey(String img, float _x, float _y) {
     photo = loadImage(img);
     photo.resize(dim, dim);
@@ -36,6 +38,10 @@ public class Monkey {
     } else {
       tint(255);
     }
+    if (menuShown) {
+      showMenu();
+    }
+    
     imageMode(CENTER);
     //image(photo, X, Y);
     pushMatrix(); // remember current drawing matrix
@@ -121,9 +127,14 @@ public class Monkey {
   
   void onClick() {
     if (hovered) {
-      println("clicked");
+      clicked = !clicked;
+      menuShown = !menuShown;
     }
+   
   }
   
+  void showMenu() {
+    rect(1000, 500, 400, 500);
+  }
   
 }

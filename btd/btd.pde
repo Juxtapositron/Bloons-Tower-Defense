@@ -103,6 +103,9 @@ void mouseClicked() {
   button.onClick();
   
   shopping.mouseClicked();
-  
+  for (int i = 0; i < monkies.size(); i++) {
+    Monkey m = monkies.get(i);
+    m.onClick();
+  }
   //System.out.println(mouseX + " " + mouseY);
 }
