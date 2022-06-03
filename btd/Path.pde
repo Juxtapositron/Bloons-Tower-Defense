@@ -67,6 +67,7 @@ public class Path {
 
 
   public void display() {
+    tint(255); //reset color
     for (int i = 0; i<b.size(); i++) {
       display(b.get(i));
     }
