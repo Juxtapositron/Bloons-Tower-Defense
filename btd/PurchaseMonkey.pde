@@ -8,8 +8,10 @@ public class PurchaseMonkey {
   boolean clicked = false;
   String placeURL;
   boolean overlap = false;
+  int type;
 
-  public PurchaseMonkey(float _price, String shopURL, String _placeURL, float _x, float _y) {
+  public PurchaseMonkey(int _type, float _price, String shopURL, String _placeURL, float _x, float _y) {
+    type = _type;
     placeURL = _placeURL;
     price = _price;
     photo = loadImage(shopURL);
@@ -30,7 +32,7 @@ public class PurchaseMonkey {
           clicked = !clicked;
 
           if (!overlap && price<=money) {
-            Monkey m = new Monkey(placeURL, mouseX, mouseY);
+            Monkey m = new Monkey(type, placeURL, mouseX, mouseY);
             monkies.add(m);
             money = money - (int)price;
           }
@@ -92,7 +94,7 @@ public class PurchaseMonkey {
         tint(255);
       }
       fill(0, 0, 0, 50);
-      ellipse(mouseX, mouseY, 300, 300);
+      ellipse(mouseX, mouseY, type*300, type*300);
       imageMode(CENTER);
       image(photo, mouseX, mouseY);
       imageMode(CORNER);
