@@ -1,7 +1,8 @@
 public class Monkey {
-  float attackRadius = 150;
-  float attackSpeed = 16;
+  float attackRadius;
+  float attackSpeed;
   float price;
+  int type;
   float damage;
   PImage photo;
   int dim = 50;
@@ -17,13 +18,22 @@ public class Monkey {
   
   int MenuX = 1000;
   int MenuY = 500;
-  public Monkey(String img, float _x, float _y) {
+  public Monkey(int _type, String img, float _x, float _y) {
+    type = _type;
     photo = loadImage(img);
     photo.resize(dim, dim);
     x = _x;
     y = _y;
     whereX = x-dim/2;
     whereY = y-dim/2;
+    if (type == 1){
+       attackRadius = 150;
+       attackSpeed = 16;
+    }
+    if (type == 2){
+      attackRadius = 300;
+      attackSpeed = 4;
+    }
     mtick = (int) attackSpeed;
   }
 
@@ -34,6 +44,15 @@ public class Monkey {
   float getWhereY() {
     return whereY;
   }
+  
+  float getRadius(){
+    return attackRadius;
+  }
+  
+  float getSpeed(){
+    return attackSpeed;
+  }
+  
   void display() {
     hovered = overRect();
     if (hovered) {
