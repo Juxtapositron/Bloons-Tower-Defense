@@ -11,7 +11,12 @@ public class Monkey {
   float whereY;
   float angle= 0;
   int mtick;
+  boolean hovered;
+  boolean clicked = false;
+  boolean menuShown = false;
   
+  int MenuX = 1000;
+  int MenuY = 500;
   public Monkey(String img, float _x, float _y) {
     photo = loadImage(img);
     photo.resize(dim, dim);
@@ -30,8 +35,16 @@ public class Monkey {
     return whereY;
   }
   void display() {
+    hovered = overRect();
+    if (hovered) {
+      tint(0, 153, 204);
+    } else {
+      tint(255);
+    }
+    if (menuShown) {
+      showMenu();
+    }
     
-    tint(255);
     imageMode(CENTER);
     //image(photo, X, Y);
     pushMatrix(); // remember current drawing matrix
@@ -110,4 +123,31 @@ public class Monkey {
     }
     mtick++;
   }
+  
+  boolean overRect() {
+    return mouseX >= whereX && mouseX <= whereX+dim && mouseY >= whereY && mouseY <= whereY+dim;
+  }
+  
+  void onClick() {
+    if (hovered) {
+      clicked = !clicked;
+      menuShown = !menuShown;
+    }
+   
+  }
+  
+  void showMenu() {
+    rect(MenuX, MenuY, 400, 500);
+    drawX();
+    
+  }
+  
+  void drawX() {
+    int circleSize = 50;
+    
+    ellipseMode(CENTER);
+    fill(255, 0, 0);
+    ellipse(MenuX, MenuY, circleSize, circleSize);
+  }
+  
 }
