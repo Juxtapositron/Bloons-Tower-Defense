@@ -4,7 +4,7 @@ public class Shop {
   public Shop() {
     PurchaseMonkey DartMonkey = new PurchaseMonkey(1, 200, "./src/000-DartMonkey.png", "./src/Dart_Monkey_Flash.png", 1200, 100);
     MonkeySale.add(DartMonkey);
-    PurchaseMonkey SuperMonkey = new PurchaseMonkey(2, 2500, "SuperMonkey.png", "./src/Dart_Monkey_Flash.png", 1200, 500);
+    PurchaseMonkey SuperMonkey = new PurchaseMonkey(2, 200, "SuperMonkey.png", "Super_Monkey.png", 1200, 500);
     MonkeySale.add(SuperMonkey);
     money = 650;
   }

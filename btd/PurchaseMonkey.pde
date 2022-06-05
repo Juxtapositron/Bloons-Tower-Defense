@@ -94,7 +94,10 @@ public class PurchaseMonkey {
         tint(255);
       }
       fill(0, 0, 0, 50);
+      if(type == 1 || type == 2)
       ellipse(mouseX, mouseY, type*300, type*300);
+      if(type == 3)
+      ellipse(mouseX, mouseY, 50, 50);
       imageMode(CENTER);
       image(photo, mouseX, mouseY);
       imageMode(CORNER);
