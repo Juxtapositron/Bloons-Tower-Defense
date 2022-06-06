@@ -32,6 +32,17 @@ void setup() {
   listOfRounds.add(new Round(new int[] {3, 5, 4, 5}));
   listOfRounds.add(new Round(new int[] {4, 10}));
   listOfRounds.add(new Round(new int[] {5, 5}));
+  listOfRounds.add(new Round(new int[] {4, 5, 5, 5}));
+  listOfRounds.add(new Round(new int[] {3, 30}));
+  listOfRounds.add(new Round(new int[] {2, 10, 3, 10, 4, 10}));
+  listOfRounds.add(new Round(new int[] {5, 5, 4, 5, 5, 5, 4, 5, 5, 5, 4, 5}));
+  listOfRounds.add(new Round(new int[] {5, 10, 4, 10, 5, 10}));
+  listOfRounds.add(new Round(new int[] {5, 20}));
+  listOfRounds.add(new Round(new int[] {2, 10, 4, 10, 5, 10}));
+  listOfRounds.add(new Round(new int[] {5, 5, 2, 5, 5,5, 4,5, 3,10}));
+  listOfRounds.add(new Round(new int[] {2, 20, 3, 20, 4, 20, 5, 20}));
+  listOfRounds.add(new Round(new int[] {5, 30}));
+  
 }
 
 void draw() {
