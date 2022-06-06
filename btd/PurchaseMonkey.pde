@@ -25,6 +25,7 @@ public class PurchaseMonkey {
     if (overRect()) {
       clicked = !clicked;
     } else {
+      
       if (clicked) {
         //code for putting on map here
         if (mouseX < 1000) { //can't put it on the shop
@@ -76,9 +77,11 @@ public class PurchaseMonkey {
     overlapCheck();
     if (!clicked) {
       if (overRect()) {
+        cursor(HAND);
         tint(0, 153, 204);
       } else {
         tint(255);
+        cursor(ARROW);
       }
       image(photo, where, y);
       
@@ -102,5 +105,7 @@ public class PurchaseMonkey {
       image(photo, mouseX, mouseY);
       imageMode(CORNER);
     }
+    
+    
   }
 }

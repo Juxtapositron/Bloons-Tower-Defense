@@ -1,8 +1,13 @@
 public class Shop {
   ArrayList<PurchaseMonkey> MonkeySale = new ArrayList<PurchaseMonkey>();
-  
+  PImage sBackground;
   public Shop() {
+
+    sBackground = loadImage("./src/shopbackground.png");
+    sBackground.resize(1000, 1000);
+    
     PurchaseMonkey DartMonkey = new PurchaseMonkey(1, 200, "./src/000-DartMonkey.png", "./src/Dart_Monkey_Flash.png", 1200, 100);
+
     MonkeySale.add(DartMonkey);
     PurchaseMonkey SuperMonkey = new PurchaseMonkey(2, 200, "SuperMonkey.png", "Super_Monkey.png", 1200, 500);
     MonkeySale.add(SuperMonkey);
@@ -10,8 +15,7 @@ public class Shop {
   }
  
   void display() {
-      
-      line(1000, 0, 1000, 1000);
+      image(sBackground, 1000, 0);
       
       fill(0);
       textSize(50);

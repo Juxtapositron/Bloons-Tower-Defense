@@ -20,6 +20,11 @@ public class StartButton {
     }
   }
   
+  void onPress() { //trigerred by spacebar
+    clicked = true;
+    roundStarted = true;
+  }
+  
   void unClick() {
     clicked = false;
   }

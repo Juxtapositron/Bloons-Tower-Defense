@@ -120,3 +120,9 @@ void mouseClicked() {
   }
   //System.out.println(mouseX + " " + mouseY);
 }
+
+void keyPressed() {
+  if (key == ' ') {
+    button.onPress();
+  }
+}

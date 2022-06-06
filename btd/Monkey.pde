@@ -15,7 +15,7 @@ public class Monkey {
   boolean hovered;
   boolean clicked = false;
   boolean menuShown = false;
-  
+
   int MenuX = 1000;
   int MenuY = 500;
   public Monkey(int _type, String img, float _x, float _y) {
@@ -55,15 +55,22 @@ public class Monkey {
   
   void display() {
     hovered = overRect();
-    if (hovered) {
+    if (hovered && !clicked) {
+      cursor(HAND);
       tint(0, 153, 204);
     } else {
       tint(255);
+      cursor(ARROW);
     }
     if (menuShown) {
       showMenu();
     }
     
+    if (clicked) {
+      fill(0, 0, 0, 50);
+      ellipse(x, y, 300, 300);
+    }
+
     imageMode(CENTER);
     //image(photo, X, Y);
     pushMatrix(); // remember current drawing matrix
@@ -81,7 +88,7 @@ public class Monkey {
     int greatestPath = 0;
     int indexWithGreatestPath = -1;
     float angleWithGreatestPath = -1;
-    
+
     for (int i = bindex.size()-1; i>=0; i--) {
       int targetPath = bindex.get(i);
 
@@ -95,8 +102,6 @@ public class Monkey {
           indexWithGreatestPath = i;
           angleWithGreatestPath = getAngle(target.location()[0], target.location()[1], getWhereX(), getWhereY()) + 270; //add 270 to get the correct angle
         }
-        
-        
       }
     }
     if (greatestPath == -1) {
@@ -107,12 +112,11 @@ public class Monkey {
       }
       return indexWithGreatestPath;
     }
-    
   }
 
   public void attack() {
     if (mtick % attackSpeed == 0) { //attack cooldown
-       
+
       int bIndexTargetIndex = targetBloon();
       if (bIndexTargetIndex != -1) {
 
@@ -142,31 +146,28 @@ public class Monkey {
     }
     mtick++;
   }
-  
+
   boolean overRect() {
     return mouseX >= whereX && mouseX <= whereX+dim && mouseY >= whereY && mouseY <= whereY+dim;
   }
-  
+
   void onClick() {
-    if (hovered) {
+    if (hovered && !menuShown) {
       clicked = !clicked;
       menuShown = !menuShown;
     }
-   
   }
-  
+
   void showMenu() {
     rect(MenuX, MenuY, 400, 500);
     drawX();
-    
   }
-  
+
   void drawX() {
     int circleSize = 50;
-    
+
     ellipseMode(CENTER);
     fill(255, 0, 0);
     ellipse(MenuX, MenuY, circleSize, circleSize);
   }
-  
 }
