@@ -16,16 +16,17 @@ public ArrayList<Path> paths = new ArrayList<Path>();
 boolean mHover = false;
 boolean pmHover = false;
 boolean sHover = false;
+
+int imageWidth = 686;
 void setup() {
   tick = 0;
-  size(1400, 1000);
+  size(900, 507);
   
   
   shopping = new Shop();
   map = new Map();
 
-  mapImage = loadImage("./src/or.jpg"); //loads the map in
-  mapImage.resize(1000, 1000);
+  mapImage = loadImage("./src/oceanroad.jpg"); //loads the map in
 
   listOfRounds.add(new Round(new int[] {1, 15})); //this is like saying 15 red bloons
   listOfRounds.add(new Round(new int[] {1, 10, 2, 5})); //this is like saying 10 red bloons followed by 5 blue bloons

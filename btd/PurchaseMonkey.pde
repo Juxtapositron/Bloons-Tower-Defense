@@ -3,7 +3,7 @@ public class PurchaseMonkey {
   PImage photo;
   float x;
   float y;
-  int dim = 120;
+  int dim = 60;
   float where;
   boolean clicked = false;
   String placeURL;

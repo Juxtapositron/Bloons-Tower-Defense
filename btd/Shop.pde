@@ -4,23 +4,26 @@ public class Shop {
   public Shop() {
 
     sBackground = loadImage("./src/shopbackground.png");
-    sBackground.resize(1000, 1000);
     
-    PurchaseMonkey DartMonkey = new PurchaseMonkey(1, 200, "./src/000-DartMonkey.png", "./src/Dart_Monkey_Flash.png", 1200, 100);
+    PurchaseMonkey DartMonkey = new PurchaseMonkey(1, 200, "./src/000-DartMonkey.png", "./src/Dart_Monkey_Flash.png", imageWidth + 50, 100);
 
     MonkeySale.add(DartMonkey);
-    PurchaseMonkey SuperMonkey = new PurchaseMonkey(2, 200, "SuperMonkey.png", "Super_Monkey.png", 1200, 500);
+    PurchaseMonkey SuperMonkey = new PurchaseMonkey(2, 200, "SuperMonkey.png", "Super_Monkey.png", imageWidth + 50, 200);
     MonkeySale.add(SuperMonkey);
     money = 650;
   }
  
   void display() {
-      image(sBackground, 1000, 0);
+
+      image(sBackground, imageWidth, 0);
       
       fill(0);
-      textSize(50);
-      text("Monkey Shop", 1040, 45);
-      text("Money: $" + money, 1040, 300);
+      textSize(30);
+      text("Monkey Shop", imageWidth+15, 45);
+      
+      fill(0, 255, 0);
+      text("$" + money, imageWidth+15, 490);
+      fill(0);
       
     boolean tempHovered = false;  
     for (int i = 0; i < MonkeySale.size(); i++) {
