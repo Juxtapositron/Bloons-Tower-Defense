@@ -7,7 +7,7 @@ public class StartButton {
 
   boolean clicked = false;
   boolean overlap = false;
-
+  boolean hovered;
   public StartButton(float _x, float _y) {
     x = _x;
     y = _y;
@@ -34,6 +34,8 @@ public class StartButton {
   }
 
   void display() {
+    hovered = overRect();
+    sHover = hovered; //this is fine because there is only one start button
     if (!clicked) {
       textSize(50);
       if (overRect()) {

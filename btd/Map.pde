@@ -105,12 +105,17 @@ public class Map {
   }
 
   void display() {
+    boolean tempHovered = false;
     
     for (int i = 0; i < monkies.size(); i++) {
       Monkey m = monkies.get(i);
       m.display();
-      
+      if (m.hovered) {
+        tempHovered = true;
+      }
     }
+    mHover = tempHovered;
+    
     textSize(30);
     fill(0,0,0);
     text("Round "+ RoundNumber, 10, 40);

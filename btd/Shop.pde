@@ -21,16 +21,25 @@ public class Shop {
       textSize(50);
       text("Monkey Shop", 1040, 45);
       text("Money: $" + money, 1040, 300);
+      
+    boolean tempHovered = false;  
     for (int i = 0; i < MonkeySale.size(); i++) {
       PurchaseMonkey monkey = MonkeySale.get(i);
       monkey.display();
+      
+      
+      if (monkey.hovered) {
+        tempHovered = true;
+      }
     }
+    pmHover = tempHovered;
   }
   
   boolean mouseClicked() {
     for (int i = 0; i < MonkeySale.size(); i++) {
       PurchaseMonkey monkey = MonkeySale.get(i);
       monkey.onClick();
+      
     }
     return false;
   }

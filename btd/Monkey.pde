@@ -55,7 +55,6 @@ public class Monkey {
   
   void display() {
     hovered = overRect();
-    mHover = hovered;
 
     if (hovered && !clicked) {
       tint(0, 153, 204);

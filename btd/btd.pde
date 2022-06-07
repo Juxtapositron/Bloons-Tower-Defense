@@ -12,9 +12,10 @@ boolean lost = false;
 ArrayList<Monkey> monkies = new ArrayList<Monkey>();
 public ArrayList<Path> paths = new ArrayList<Path>();
 
+//Hover variables to decide cursor
 boolean mHover = false;
 boolean pmHover = false;
-
+boolean sHover = false;
 void setup() {
   tick = 0;
   size(1400, 1000);
@@ -50,12 +51,13 @@ void setup() {
 }
 
 void draw() {
-  println(mHover);
-  if (mHover || pmHover) {
+  if (mHover || pmHover || sHover) { //cursor is hovered over ANY monkey or ANY purchase monkey or any start button
     cursor(HAND);
   } else {
     cursor(ARROW);
   }
+  
+  
   //println(paths.size());
   if (lives <= 0) {
     lives = 0;
@@ -92,13 +94,6 @@ void draw() {
         map.progress();
         if (listOfRounds.size() == 0) { //VICTORY, NO ROUNDS LEFT
           victory = true;
-
-          //this code is to remove the pesky bloon that doesn't disappear right away
-          bindex = new ArrayList<Integer>();
-          background(255);
-          image(mapImage, 0, 0);
-          shopping.display();
-          map.display();
         }
       }
       previousBindexLength = bindex.size();
