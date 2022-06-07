@@ -7,9 +7,9 @@ public class PurchaseMonkey {
   float where;
   boolean clicked = false;
   String placeURL;
-  boolean overlap = false;
+  boolean overlap = false; //overlap for path
   int type;
-
+  boolean mouseHovered;
   public PurchaseMonkey(int _type, float _price, String shopURL, String _placeURL, float _x, float _y) {
     type = _type;
     placeURL = _placeURL;
@@ -75,13 +75,14 @@ public class PurchaseMonkey {
     text("$" + (int) price, x + dim/2, y + dim/2 + 12);
     
     overlapCheck();
+
     if (!clicked) {
       if (overRect()) {
-        cursor(HAND);
+       
         tint(0, 153, 204);
       } else {
         tint(255);
-        cursor(ARROW);
+
       }
       image(photo, where, y);
       
@@ -105,7 +106,6 @@ public class PurchaseMonkey {
       image(photo, mouseX, mouseY);
       imageMode(CORNER);
     }
-    
     
   }
 }

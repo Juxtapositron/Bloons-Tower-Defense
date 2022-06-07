@@ -11,6 +11,10 @@ boolean victory = false;
 boolean lost = false;
 ArrayList<Monkey> monkies = new ArrayList<Monkey>();
 public ArrayList<Path> paths = new ArrayList<Path>();
+
+boolean mHover = false;
+boolean pmHover = false;
+
 void setup() {
   tick = 0;
   size(1400, 1000);
@@ -46,6 +50,12 @@ void setup() {
 }
 
 void draw() {
+  println(mHover);
+  if (mHover || pmHover) {
+    cursor(HAND);
+  } else {
+    cursor(ARROW);
+  }
   //println(paths.size());
   if (lives <= 0) {
     lives = 0;
