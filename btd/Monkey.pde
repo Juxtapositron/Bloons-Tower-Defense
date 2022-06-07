@@ -55,12 +55,12 @@ public class Monkey {
   
   void display() {
     hovered = overRect();
+    mHover = hovered;
+
     if (hovered && !clicked) {
-      cursor(HAND);
       tint(0, 153, 204);
     } else {
       tint(255);
-      cursor(ARROW);
     }
     if (menuShown) {
       showMenu();
