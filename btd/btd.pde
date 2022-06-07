@@ -2,7 +2,7 @@ Shop shopping;
 Map map;
 int money;
 PImage or;
-StartButton button = new StartButton(35, 800);
+StartButton button = new StartButton(20, 420);
 
 int tick;
 boolean roundStarted = false;
@@ -22,7 +22,7 @@ void setup() {
   tick = 0;
   size(900, 507);
   
-  
+  println(height);
   shopping = new Shop();
   map = new Map();
 
@@ -117,6 +117,7 @@ void draw() {
 }
 
 void mouseClicked() {
+  /*
   button.onClick();
   
   shopping.mouseClicked();
@@ -124,7 +125,8 @@ void mouseClicked() {
     Monkey m = monkies.get(i);
     m.onClick();
   }
-  //System.out.println(mouseX + " " + mouseY);
+  */
+  System.out.println(mouseX + " " + mouseY);
 }
 
 void keyPressed() {

@@ -2,8 +2,8 @@ public class StartButton {
 
   float x;
   float y;
-  int dimX = 120;
-  int dimY= 300;
+  int dimX = 70;
+  int dimY= 190;
 
   boolean clicked = false;
   boolean overlap = false;
@@ -37,7 +37,7 @@ public class StartButton {
     hovered = overRect();
     sHover = hovered; //this is fine because there is only one start button
     if (!clicked) {
-      textSize(50);
+      textSize(30);
       if (overRect()) {
         fill(38, 165, 52);
         rect(x, y, dimY, dimX, 20, 20, 20, 20);

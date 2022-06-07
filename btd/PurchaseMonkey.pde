@@ -29,7 +29,7 @@ public class PurchaseMonkey {
       
       if (clicked) {
         //code for putting on map here
-        if (mouseX < 1000) { //can't put it on the shop
+        if (mouseX < imageWidth) { //can't put it on the shop
 
           clicked = !clicked;
 
@@ -38,6 +38,8 @@ public class PurchaseMonkey {
             monkies.add(m);
             money = money - (int)price;
           }
+        } else {
+          tint(0, 153, 204);
         }
       }
     }
