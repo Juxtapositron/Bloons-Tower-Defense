@@ -3,9 +3,15 @@ Map map;
 int money;
 PImage or;
 PImage thumb;
-StartButton button = new StartButton(35, 800);
+PImage loading1;
+PImage loading2;
+StartButton button = new StartButton(20, 420);
 StartMenu start = new StartMenu("Thumbnail.png");
 int tick;
+Kernel blur = new Kernel( new float[][] {
+    {.111, .111, .111},
+    {.111, .111, .111},
+    {.111, .111, .111}    });
 boolean roundStarted = false;
 ArrayList<Round> listOfRounds = new ArrayList<Round>();
 boolean victory = false;
@@ -28,9 +34,13 @@ void setup() {
   map = new Map();
 
   thumb = loadImage("Thumbnail.png");
-  thumb.resize(1400,1000);
+  thumb.resize(900,507);
+  loading1 = loadImage("loading.png");
+  loading1.resize(900,507);
+  loading2 = loading1.copy();
+  blur.apply(loading1, loading2);
   mapImage = loadImage("./src/or.jpg"); //loads the map in
-  mapImage.resize(1000, 1000);
+
 
 
   listOfRounds.add(new Round(new int[] {1, 15})); //this is like saying 15 red bloons
@@ -59,6 +69,11 @@ void setup() {
 void draw() {
 
   if (!start.started()){
+    while(tick <=120){
+      if(tick < 60)
+      image(loading1, 0, 0);
+      else image(loading2, 0, 0);
+    }
     start.display();
   }
 

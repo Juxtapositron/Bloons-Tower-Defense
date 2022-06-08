@@ -45,7 +45,7 @@ public class Bloon {
   }
 
   public int getVel() {
-    return hp * 4;
+    return hp * 2;
   }
   public PImage getImg() {
     return bloon;
