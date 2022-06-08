@@ -2,8 +2,9 @@ Shop shopping;
 Map map;
 int money;
 PImage or;
-StartButton button = new StartButton(20, 420);
-
+PImage thumb;
+StartButton button = new StartButton(35, 800);
+StartMenu start = new StartMenu("Thumbnail.png");
 int tick;
 boolean roundStarted = false;
 ArrayList<Round> listOfRounds = new ArrayList<Round>();
@@ -26,7 +27,11 @@ void setup() {
   shopping = new Shop();
   map = new Map();
 
-  mapImage = loadImage("./src/oceanroad.jpg"); //loads the map in
+  thumb = loadImage("Thumbnail.png");
+  thumb.resize(1400,1000);
+  mapImage = loadImage("./src/or.jpg"); //loads the map in
+  mapImage.resize(1000, 1000);
+
 
   listOfRounds.add(new Round(new int[] {1, 15})); //this is like saying 15 red bloons
   listOfRounds.add(new Round(new int[] {1, 10, 2, 5})); //this is like saying 10 red bloons followed by 5 blue bloons
@@ -52,15 +57,14 @@ void setup() {
 }
 
 void draw() {
-  if (mHover || pmHover || sHover) { //cursor is hovered over ANY monkey or ANY purchase monkey or any start button
-    cursor(HAND);
-  } else {
-    cursor(ARROW);
+
+  if (!start.started()){
+    start.display();
   }
-  
-  
+
   //println(paths.size());
-  if (lives <= 0) {
+  else {
+    if (lives <= 0) {
     lives = 0;
     lost = true;
   }
@@ -114,6 +118,7 @@ void draw() {
       text("YOU LOST", 10, 600);
     }
   }
+  }
 }
 
 void mouseClicked() {
@@ -132,5 +137,8 @@ void mouseClicked() {
 void keyPressed() {
   if (key == ' ') {
     button.onPress();
+  }
+  if (key == 's'){
+    start.start();
   }
 }

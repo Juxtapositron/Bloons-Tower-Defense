@@ -1,22 +1,21 @@
 public class StartMenu{
-  
   boolean started;
   
-  public StartMenu(){
+  public StartMenu(String s){
     
     started = false;
-    
   }
   
   
-  public boolean start(){
+  public void start(){
      started = true;
-     return started;
   }
  
  public boolean started(){
    return started;
 }
-
+public void display(){
+  image(thumb,0,0);
+ }
 
 }
