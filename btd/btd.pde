@@ -2,8 +2,9 @@ Shop shopping;
 Map map;
 int money;
 PImage or;
+PImage thumb;
 StartButton button = new StartButton(35, 800);
-
+StartMenu start = new StartMenu("Thumbnail.png");
 int tick;
 boolean roundStarted = false;
 ArrayList<Round> listOfRounds = new ArrayList<Round>();
@@ -18,7 +19,8 @@ void setup() {
   
   shopping = new Shop();
   map = new Map();
-
+  thumb = loadImage("Thumbnail.png");
+  thumb.resize(1400,1000);
   mapImage = loadImage("./src/or.jpg"); //loads the map in
   mapImage.resize(1000, 1000);
 
@@ -46,8 +48,12 @@ void setup() {
 }
 
 void draw() {
+  if (!start.started()){
+    start.display();
+  }
   //println(paths.size());
-  if (lives <= 0) {
+  else {
+    if (lives <= 0) {
     lives = 0;
     lost = true;
   }
@@ -108,6 +114,7 @@ void draw() {
       text("YOU LOST", 10, 600);
     }
   }
+  }
 }
 
 void mouseClicked() {
@@ -124,5 +131,8 @@ void mouseClicked() {
 void keyPressed() {
   if (key == ' ') {
     button.onPress();
+  }
+  if (key == 's'){
+    start.start();
   }
 }
