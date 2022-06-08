@@ -94,7 +94,7 @@ public class PurchaseMonkey {
     } else {
 
       PImage photo = loadImage(placeURL);
-      photo.resize(50, 50);
+      photo.resize(30, 30);
 
       if (overlap) {
         tint(255, 0, 0);
@@ -102,10 +102,13 @@ public class PurchaseMonkey {
         tint(255);
       }
       fill(0, 0, 0, 50);
-      if(type == 1 || type == 2)
-      ellipse(mouseX, mouseY, type*300, type*300);
-      if(type == 3)
-      ellipse(mouseX, mouseY, 50, 50);
+      if(type == 1) {
+        
+        ellipse(mouseX, mouseY, 180, 180);
+      } else if (type ==2) {
+        ellipse(mouseX, mouseY, 360, 360);
+      } 
+
       imageMode(CENTER);
       image(photo, mouseX, mouseY);
       imageMode(CORNER);

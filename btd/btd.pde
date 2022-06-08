@@ -117,7 +117,7 @@ void draw() {
 }
 
 void mouseClicked() {
-  /*
+  
   button.onClick();
   
   shopping.mouseClicked();
@@ -125,7 +125,7 @@ void mouseClicked() {
     Monkey m = monkies.get(i);
     m.onClick();
   }
-  */
+  
   System.out.println(mouseX + " " + mouseY);
 }
 
