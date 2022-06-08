@@ -10,27 +10,27 @@ PImage mapImage;
 public class Map {
   
   public Map() {
-    addPivot(900, 1);
-    addPivot(900, 297);
-    addPivot(744, 297);
-    addPivot(744, 176);
-    addPivot(112, 176);
-    addPivot(112, 508);
-    addPivot(239, 508);
-    addPivot(239, 360);
-    addPivot(365, 360);
-    addPivot(365, 505);
-    addPivot(487, 505);
-    addPivot(487, 359);
-    addPivot(611, 359);
-    addPivot(611, 668);
-    addPivot(757, 668);
-    addPivot(757, 470);
-    addPivot(902, 470);
-    addPivot(902, 803);
-    addPivot(463, 803);
-    addPivot(463, 669);
-    addPivot(2, 669);
+    addPivot(616, 1);
+    addPivot(616, 153);
+    addPivot(508, 153);
+    addPivot(508, 89);
+    addPivot(77, 89);
+    addPivot(77, 261);
+    addPivot(168, 261);
+    addPivot(168, 186);
+    addPivot(249, 186);
+    addPivot(249, 260);
+    addPivot(332, 260);
+    addPivot(332, 185);
+    addPivot(417, 185);
+    addPivot(417, 339);
+    addPivot(519, 339);
+    addPivot(519, 244);
+    addPivot(618, 244);
+    addPivot(618, 405);
+    addPivot(318, 405);
+    addPivot(318, 342);
+    addPivot(1, 342);
   
     
     fillPath();
@@ -105,17 +105,22 @@ public class Map {
   }
 
   void display() {
+    boolean tempHovered = false;
     
     for (int i = 0; i < monkies.size(); i++) {
       Monkey m = monkies.get(i);
       m.display();
-      
+      if (m.hovered) {
+        tempHovered = true;
+      }
     }
+    mHover = tempHovered;
+    
     textSize(30);
     fill(0,0,0);
     text("Round "+ RoundNumber, 10, 40);
     fill(255, 0, 0);
-    text(lives + "❤", 10, 990);
+    text(lives + "❤", imageWidth+120, 490);
   }
   
   

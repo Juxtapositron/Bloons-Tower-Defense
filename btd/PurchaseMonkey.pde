@@ -3,13 +3,14 @@ public class PurchaseMonkey {
   PImage photo;
   float x;
   float y;
-  int dim = 120;
+  int dim = 60;
   float where;
   boolean clicked = false;
   String placeURL;
   boolean overlap = false; //overlap for path
   int type;
-  boolean mouseHovered;
+
+  boolean hovered;
   public PurchaseMonkey(int _type, float _price, String shopURL, String _placeURL, float _x, float _y) {
     type = _type;
     placeURL = _placeURL;
@@ -28,7 +29,7 @@ public class PurchaseMonkey {
       
       if (clicked) {
         //code for putting on map here
-        if (mouseX < 1000) { //can't put it on the shop
+        if (mouseX < imageWidth) { //can't put it on the shop
 
           clicked = !clicked;
 
@@ -37,6 +38,8 @@ public class PurchaseMonkey {
             monkies.add(m);
             money = money - (int)price;
           }
+        } else {
+          tint(0, 153, 204);
         }
       }
     }
@@ -75,9 +78,10 @@ public class PurchaseMonkey {
     text("$" + (int) price, x + dim/2, y + dim/2 + 12);
     
     overlapCheck();
-
+    
+    hovered = overRect();
     if (!clicked) {
-      if (overRect()) {
+      if (hovered) {
        
         tint(0, 153, 204);
       } else {
@@ -90,7 +94,7 @@ public class PurchaseMonkey {
     } else {
 
       PImage photo = loadImage(placeURL);
-      photo.resize(50, 50);
+      photo.resize(30, 30);
 
       if (overlap) {
         tint(255, 0, 0);
@@ -98,10 +102,13 @@ public class PurchaseMonkey {
         tint(255);
       }
       fill(0, 0, 0, 50);
-      if(type == 1 || type == 2)
-      ellipse(mouseX, mouseY, type*300, type*300);
-      if(type == 3)
-      ellipse(mouseX, mouseY, 50, 50);
+      if(type == 1) {
+        
+        ellipse(mouseX, mouseY, 180, 180);
+      } else if (type ==2) {
+        ellipse(mouseX, mouseY, 360, 360);
+      } 
+
       imageMode(CENTER);
       image(photo, mouseX, mouseY);
       imageMode(CORNER);

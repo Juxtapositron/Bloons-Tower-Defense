@@ -29,7 +29,7 @@ public class Bloon {
         bloon = loadImage("Blue.png");
       if (hp == 1)
         bloon = loadImage("Red.png");
-      bloon.resize(50, 50);
+      bloon.resize(30, 30);
     }
   }
 
@@ -66,7 +66,7 @@ public class Bloon {
       bloon = loadImage("Blue.png");
     if (hp == 1)
       bloon = loadImage("Red.png");
-    bloon.resize(50, 50);
+    bloon.resize(30, 30);
     return hp;
   }
 
