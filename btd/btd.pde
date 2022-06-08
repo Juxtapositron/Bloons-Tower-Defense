@@ -3,7 +3,7 @@ Map map;
 int money;
 PImage or;
 PImage thumb;
-StartButton button = new StartButton(35, 800);
+StartButton button = new StartButton(20, 420);
 StartMenu start = new StartMenu("Thumbnail.png");
 int tick;
 boolean roundStarted = false;
@@ -28,9 +28,8 @@ void setup() {
   map = new Map();
 
   thumb = loadImage("Thumbnail.png");
-  thumb.resize(1400,1000);
+  thumb.resize(900,507);
   mapImage = loadImage("./src/or.jpg"); //loads the map in
-  mapImage.resize(1000, 1000);
 
 
   listOfRounds.add(new Round(new int[] {1, 15})); //this is like saying 15 red bloons

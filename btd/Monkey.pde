@@ -1,3 +1,4 @@
+Monkey monkeyWithUpgradeOpen;
 public class Monkey {
   float attackRadius;
   float attackSpeed;
@@ -16,8 +17,9 @@ public class Monkey {
   boolean clicked = false;
   boolean menuShown = false;
 
-  int MenuX = 1000;
-  int MenuY = 500;
+  int MenuX = 686;
+  int MenuY = 0;
+  PImage sBackground = loadImage("./src/shopbackground.png");
   public Monkey(int _type, String img, float _x, float _y) {
     type = _type;
     photo = loadImage(img);
@@ -61,11 +63,11 @@ public class Monkey {
     } else {
       tint(255);
     }
-    if (menuShown) {
+    if (this == monkeyWithUpgradeOpen) {
       showMenu();
     }
     
-    if (clicked) {
+    if (this == monkeyWithUpgradeOpen) {
       fill(0, 0, 0, 50);
       ellipse(x, y, attackRadius *2, attackRadius *2);
     }
@@ -152,13 +154,15 @@ public class Monkey {
 
   void onClick() {
     if (hovered && !menuShown) {
-      clicked = !clicked;
-      menuShown = !menuShown;
+      monkeyWithUpgradeOpen = this;
+      menuShown = true;
     }
   }
 
   void showMenu() {
-    rect(MenuX, MenuY, 400, 500);
+    tint(0);
+    image(sBackground, imageWidth, 0); 
+    
     drawX();
   }
 

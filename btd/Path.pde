@@ -62,7 +62,7 @@ public class Path {
   }
 
   public void display(Bloon other) {
-    image(other.getImg(), x-25, y-25);
+    image(other.getImg(), x-15, y-15);
   }
 
 
