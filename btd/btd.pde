@@ -12,17 +12,26 @@ boolean victory = false;
 boolean lost = false;
 ArrayList<Monkey> monkies = new ArrayList<Monkey>();
 public ArrayList<Path> paths = new ArrayList<Path>();
+
+//Hover variables to decide cursor
+boolean mHover = false;
+boolean pmHover = false;
+boolean sHover = false;
+
+int imageWidth = 686;
 void setup() {
   tick = 0;
-  size(1400, 1000);
+  size(900, 507);
   
-  
+  println(height);
   shopping = new Shop();
   map = new Map();
+
   thumb = loadImage("Thumbnail.png");
   thumb.resize(1400,1000);
   mapImage = loadImage("./src/or.jpg"); //loads the map in
   mapImage.resize(1000, 1000);
+
 
   listOfRounds.add(new Round(new int[] {1, 15})); //this is like saying 15 red bloons
   listOfRounds.add(new Round(new int[] {1, 10, 2, 5})); //this is like saying 10 red bloons followed by 5 blue bloons
@@ -48,9 +57,11 @@ void setup() {
 }
 
 void draw() {
+
   if (!start.started()){
     start.display();
   }
+
   //println(paths.size());
   else {
     if (lives <= 0) {
@@ -88,13 +99,6 @@ void draw() {
         map.progress();
         if (listOfRounds.size() == 0) { //VICTORY, NO ROUNDS LEFT
           victory = true;
-
-          //this code is to remove the pesky bloon that doesn't disappear right away
-          bindex = new ArrayList<Integer>();
-          background(255);
-          image(mapImage, 0, 0);
-          shopping.display();
-          map.display();
         }
       }
       previousBindexLength = bindex.size();
@@ -118,6 +122,7 @@ void draw() {
 }
 
 void mouseClicked() {
+  
   button.onClick();
   
   shopping.mouseClicked();
@@ -125,7 +130,8 @@ void mouseClicked() {
     Monkey m = monkies.get(i);
     m.onClick();
   }
-  //System.out.println(mouseX + " " + mouseY);
+  
+  System.out.println(mouseX + " " + mouseY);
 }
 
 void keyPressed() {

@@ -5,7 +5,7 @@ public class Monkey {
   int type;
   float damage;
   PImage photo;
-  int dim = 50;
+  int dim = 30;
   float x;
   float y;
   float whereX;
@@ -27,11 +27,11 @@ public class Monkey {
     whereX = x-dim/2;
     whereY = y-dim/2;
     if (type == 1){
-       attackRadius = 150;
+       attackRadius = 90;
        attackSpeed = 16;
     }
     if (type == 2){
-      attackRadius = 300;
+      attackRadius = 180;
       attackSpeed = 4;
     }
     mtick = (int) attackSpeed;
@@ -55,12 +55,11 @@ public class Monkey {
   
   void display() {
     hovered = overRect();
+
     if (hovered && !clicked) {
-      cursor(HAND);
       tint(0, 153, 204);
     } else {
       tint(255);
-      cursor(ARROW);
     }
     if (menuShown) {
       showMenu();
@@ -68,7 +67,7 @@ public class Monkey {
     
     if (clicked) {
       fill(0, 0, 0, 50);
-      ellipse(x, y, 300, 300);
+      ellipse(x, y, attackRadius *2, attackRadius *2);
     }
 
     imageMode(CENTER);
@@ -164,7 +163,7 @@ public class Monkey {
   }
 
   void drawX() {
-    int circleSize = 50;
+    int circleSize = 25;
 
     ellipseMode(CENTER);
     fill(255, 0, 0);
