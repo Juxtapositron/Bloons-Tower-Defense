@@ -69,11 +69,11 @@ void setup() {
 void draw() {
 
   if (!start.started()){
-    while(tick <=120){
-      if(tick < 60)
-      image(loading1, 0, 0);
-      else image(loading2, 0, 0);
-    }
+   // while(tick <=120){
+      //if(tick < 60)
+      //image(loading1, 0, 0);
+      //else image(loading2, 0, 0);
+    //}
     start.display();
   }
 
