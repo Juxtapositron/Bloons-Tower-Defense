@@ -67,7 +67,11 @@ void setup() {
 }
 
 void draw() {
-
+  if (mHover || pmHover || sHover) {
+    cursor(HAND);
+  } else {
+    cursor(CROSS);
+  }
 
   if(tickCheck)
   tick++;
