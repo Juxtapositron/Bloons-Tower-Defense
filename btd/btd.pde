@@ -5,6 +5,7 @@ PImage or;
 PImage thumb;
 PImage loading1;
 PImage loading2;
+int cheat = 0;
 StartButton button = new StartButton(20, 420);
 StartMenu start = new StartMenu("Thumbnail.png");
 int tick;
@@ -13,6 +14,7 @@ Kernel blur = new Kernel( new float[][] {
     {.111, .111, .111},
     {.111, .111, .111}    });
 boolean roundStarted = false;
+boolean tickCheck;
 ArrayList<Round> listOfRounds = new ArrayList<Round>();
 boolean victory = false;
 boolean lost = false;
@@ -63,16 +65,20 @@ void setup() {
   listOfRounds.add(new Round(new int[] {5, 5, 2, 5, 5,5, 4,5, 3,10}));
   listOfRounds.add(new Round(new int[] {2, 20, 3, 20, 4, 20, 5, 20}));
   listOfRounds.add(new Round(new int[] {5, 30}));
-  
+  tickCheck = true;
 }
 
 void draw() {
-
-  if (!start.started()){
-   // while(tick <=120){
-      //if(tick < 60)
+  if(tickCheck)
+  tick++;
+  if (!start.started()){ //Shadman - trying to add loading screen finess, ultimately a fail
+  //while(tick <=120){
+      //if(tick < 60){
       //image(loading1, 0, 0);
-      //else image(loading2, 0, 0);
+      //}
+      //else {
+        //image(loading2, 0, 0);
+      //}
     //}
     start.display();
   }
@@ -81,10 +87,10 @@ void draw() {
   else {
     if (lives <= 0) {
     lives = 0;
+    tickCheck = false;
     lost = true;
   }
   if (!victory && !lost) {
-    tick++;
     background(255);
     tint(255);
     image(mapImage, 0, 0);
@@ -113,6 +119,7 @@ void draw() {
         money += 100;
         map.progress();
         if (listOfRounds.size() == 0) { //VICTORY, NO ROUNDS LEFT
+        tickCheck = false;
           victory = true;
         }
       }
@@ -155,5 +162,10 @@ void keyPressed() {
   }
   if (key == 's'){
     start.start();
+  }
+  if (key == 'r'){
+    cheat++;
+    if(listOfRounds.size() != 0)
+    listOfRounds.remove(0);
   }
 }
