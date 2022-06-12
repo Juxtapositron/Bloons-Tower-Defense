@@ -12,8 +12,10 @@ public class Shop {
     MonkeySale.add(DartMonkey);
     
     
-    
+    Upgrade superMonkeyFirst = new Upgrade(400, 10, 0, true);
+    Upgrade superMonkeySecond = new Upgrade(350, 0, 10, false);
     PurchaseMonkey SuperMonkey = new PurchaseMonkey(2, 200, "SuperMonkey.png", "Super_Monkey.png", imageWidth + 50, 200);
+    SuperMonkey.addUpgrades(superMonkeyFirst, superMonkeySecond);
     MonkeySale.add(SuperMonkey);
     money = 650;
   }

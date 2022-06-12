@@ -6,8 +6,16 @@ public class Upgrade {
   boolean firstBox; //when true, the upgrade is on top, and when false, it's on the bottom
   boolean hovered = false;
   boolean bought = false;
-  float opacity = 255;
   
+  float topx1 = 698;
+  float topy1 = 85;
+  float topx2 = 888;
+  float topy2 = 167;
+  
+  float botx1 = 698;
+  float boty1 = 192;
+  float botx2 = 888;
+  float boty2 = 277;
   public Upgrade(int _cost, float _AttackSpeedIncrease, float _RangeIncrease, boolean _firstbox) {
     cost = _cost;
     AttackSpeedIncrease = _AttackSpeedIncrease;
@@ -33,22 +41,45 @@ public class Upgrade {
   
   void detectHover() {
     if (firstBox) {
-      hovered = overRect(684, 70, 898, 179);
+      hovered = overRect(topx1, topy1, topx2, topy2);
     } else {
-      hovered = overRect(686, 183, 898, 284);
+      hovered = overRect(botx1, boty1, botx2, boty2);
     }
   }
   void display() {
     detectHover();
     
-    tint(255, opacity);
-    if (firstBox) {
-      rect(684, 70, 898-684, 179-70);
-      text("Increases the attack speed of the monkey by " + RangeIncrease * 100/ m.attackRadius + "%", 716, 104);
-    } else {
-      rect(686, 183, 898-684, 284-183);
-      text("Increases the range of the monkey by " + AttackSpeedIncrease * 100/ m.attackSpeed + "%", 716, 104);
+    stroke(0);
+    strokeWeight(1);
+    if (hovered) {
+      stroke(0, 153, 204);
+      strokeWeight(5);
     }
+    
+    textSize(13);
+
+    if (firstBox) {
+      noFill();
+      rect(topx1, topy1, topx2-topx1, topy2-topy1);
+      
+      fill(0, 255, 0);
+      text("Increase attackspeed by " + (int) ((AttackSpeedIncrease * 100)/ (m.attackSpeed)) + "%", topx1+5, topy1 + 15);
+      
+      fill (255, 0, 0);
+      text("Cost: $" + cost, topx1 + 60, topy1 + 76);
+    } else {
+      noFill();
+      rect(botx1, boty1, botx2-botx1, boty2-boty1);
+      
+      fill(0, 255, 0);
+      text("Increase range by " + (int) ((RangeIncrease * 100)/ (m.attackRadius)) + "%", botx1+5, boty1 + 15);
+      
+      fill(255, 0, 0);
+      text("Cost: $" + cost, botx1+60, boty1 + 80);
+    }
+    
+    stroke(0);
+    strokeWeight(1);
   }
   void onClick() {
     if (hovered) {

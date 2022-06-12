@@ -47,10 +47,6 @@ public class Monkey {
     upgrades.add(f);
     upgrades.add(s);
   }
-  void addUpgrade(int _cost, float _AttackSpeedIncrease, float _RangeIncrease, boolean _firstbox) {
-    Upgrade u = new Upgrade(this, _cost, _AttackSpeedIncrease, _RangeIncrease, _firstbox);
-    upgrades.add(u);
-  }
   
   float getWhereX() {
     return whereX;
