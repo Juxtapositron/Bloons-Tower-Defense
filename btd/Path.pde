@@ -27,6 +27,12 @@ public class Path {
     for (int i = 0; i<other.size(); i++)
       b.add(other.get(i));
   }
+  
+  public void reset(){
+    for (int i = 0; i<size(); i++){
+      removeBloon(b.get(i));
+    }
+  }
 
   public void move(int currentPathIndex) { 
     //currentPath is where this is currently
