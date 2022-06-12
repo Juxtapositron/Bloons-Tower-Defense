@@ -36,10 +36,54 @@ Kevin (5/30) : I implemented a cleaner solution to adding bloons to each round, 
 
 Shadman (5/30): Working on Monkey class. Had to finish in one day to get to MVP, so rushed an incomplete version. Should be at MVP, due to help from Kevin. Also created all ten rounds, and added round number global variable.
 
+Kevin (5/31) :
+
+Shadman (5/31): Relaxed a lot since demos were due today, only really added onPath() to prevented placement on Monkeys on the Path.
+
+Kevin (6/1) :
+
+Shadman (6/1): Starting planning Super Monkey additions. Most work was done afk, using math to determine good stats for Super Monkey.
+
+Kevin (6/2) :
+
+Shadman (6/2): I only merged my work on the laptop. Most time spent preparing presentation ideas for Kevin and I (We presented today).
+
+Kevin (6/3) :
+
+Shadman (6/3): Spent time helping make attackRadius show on click with Kevin, and finally implemented Super Monkey in all its glory (very initial). Had to add type parameter to long list of parameters for monkey, makes implementing more monkeys in the future easier.
+
+Kevin (6/4) :
+
+Shadman (6/4): Super Monkey done! Works fabulously with Kevin's changes!
+
+Kevin (6/5) : Break day.
+
+Shadman (6/5): Break day.
+
+Kevin (6/6) :
+
+Shadman (6/6): Start menu's beginnings. Very beginning-level thumbnail, borrowing from BTD5 promotion flyers.
+
+Kevin (6/7) :
+
+Shadman (6/7): Pretty basic, starting screen lets you start once you press 's'. Also, tickCheck boolean severely cleans up code in other aspects of code.
+
+Kevin (6/8):
+
+Shadman (6/8): Turning my eyes to fake loading screen. Found nice images, researched ideas on how to make it look real.
+
+Shadman (6/9): (pushed on June 10th) Loading screen looked finished, but takes way too long. Will need to look further into it, for moment being Mr. K said I need to get cheating done.
+
+Shadman (6/10 - 6/11) Break day. School finally feels finished.
+
+Shadman (6/12): Cheating works seamlessly! Also, loading screen and menu screen in the works, hopefully done by tomorrow morning commit.
+
 ^^^ Commit Log ^^^
 
 Below is a set of instructions.
 
+To get past the start screen, press "s". To skip rounds, press "r". DO NOT press "r" before pressing "s"!
+
 Click once on the dart monkey under the text "Monkey Shop". This should drag a Dart Monkey, which you can then place anywhere on the map as long as there is no Dart Monkey that has been placed nearby. This action costs $200, and can be done any time during gameplay (even between rounds).
 
-To start each round, click the "Start Round" button. When it appears again, the round has ended, and you need to start the next round. Repeat until loss/victory. Game currently contains 10 rounds of easy difficulty.
+To start each round, click the "Start Round" button (or press the space bar). When it appears again, the round has ended, and you need to start the next round. Repeat until loss/victory. Game currently contains 10 rounds of easy difficulty.
