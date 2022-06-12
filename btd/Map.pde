@@ -118,10 +118,10 @@ public class Map {
     
     textSize(30);
     fill(0,0,0);
-    text("Round "+ RoundNumber, 10, 40);
+    text("Round "+ (RoundNumber+cheat), 10, 40);
     fill(255, 0, 0);
     text(lives + "❤", imageWidth+120, 490);
   }
   
-  
+ 
 }
