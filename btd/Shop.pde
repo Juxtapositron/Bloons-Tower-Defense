@@ -5,15 +5,15 @@ public class Shop {
 
     sBackground = loadImage("./src/shopbackground.png");
 
-    Upgrade dartMonkeyFirst = new Upgrade(350, 10, 0, true);
-    Upgrade dartMonkeySecond = new Upgrade(300, 0, 10, false);
+    Upgrade dartMonkeyFirst = new Upgrade(150, 10, 0, true);
+    Upgrade dartMonkeySecond = new Upgrade(100, 0, 30, false);
     PurchaseMonkey DartMonkey = new PurchaseMonkey(1, 200, "./src/000-DartMonkey.png", "./src/Dart_Monkey_Flash.png", imageWidth + 50, 100);
     DartMonkey.addUpgrades(dartMonkeyFirst, dartMonkeySecond);
     MonkeySale.add(DartMonkey);
     
     
-    Upgrade superMonkeyFirst = new Upgrade(400, 10, 0, true);
-    Upgrade superMonkeySecond = new Upgrade(350, 0, 10, false);
+    Upgrade superMonkeyFirst = new Upgrade(200, 3, 0, true);
+    Upgrade superMonkeySecond = new Upgrade(150, 0, 40, false);
     PurchaseMonkey SuperMonkey = new PurchaseMonkey(2, 200, "SuperMonkey.png", "Super_Monkey.png", imageWidth + 50, 200);
     SuperMonkey.addUpgrades(superMonkeyFirst, superMonkeySecond);
     MonkeySale.add(SuperMonkey);
@@ -48,6 +48,8 @@ public class Shop {
   void mouseClicked() {
     if (monkeyWithUpgradeOpen == null) {
       for (int i = 0; i < MonkeySale.size(); i++) {
+        
+        
         PurchaseMonkey monkey = MonkeySale.get(i);
         monkey.onClick();
       }

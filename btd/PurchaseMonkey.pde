@@ -29,13 +29,14 @@ public class PurchaseMonkey {
     second = s;
   }
   void onClick() {
-    if (overRect()) {
+    
+    if (mouseX > imageWidth && overRect()) {
       clicked = !clicked;
     } else {
-      
+      if (mouseX < imageWidth) { //can't put it on the shop
       if (clicked) {
         //code for putting on map here
-        if (mouseX < imageWidth) { //can't put it on the shop
+    
 
           clicked = !clicked;
 

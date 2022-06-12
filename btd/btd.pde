@@ -161,8 +161,9 @@ void draw() {
 }
 
 void mouseClicked() {
-
-  button.onClick();
+  if (mouseX > imageWidth) {
+    button.onClick();
+  }
 
   shopping.mouseClicked();
   for (int i = 0; i < monkies.size(); i++) {

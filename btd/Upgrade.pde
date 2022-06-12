@@ -16,6 +16,7 @@ public class Upgrade {
   float boty1 = 192;
   float botx2 = 888;
   float boty2 = 277;
+  
   public Upgrade(int _cost, float _AttackSpeedIncrease, float _RangeIncrease, boolean _firstbox) {
     cost = _cost;
     AttackSpeedIncrease = _AttackSpeedIncrease;
@@ -90,6 +91,9 @@ public class Upgrade {
         money -= cost;
         bought = true;
         hovered = false;
+        
+        m.increaseRange(RangeIncrease);
+        m.increaseAttackSpeed(AttackSpeedIncrease);
       } else {
         println("insuffient funds");
       }

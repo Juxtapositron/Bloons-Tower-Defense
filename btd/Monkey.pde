@@ -174,10 +174,13 @@ public class Monkey {
       monkeyWithUpgradeOpen = null;
     }
     
-    if (this == monkeyWithUpgradeOpen) {
-      for (int i = 0; i < upgrades.size(); i++) {
-        Upgrade u = upgrades.get(i);
-        u.onClick();
+    if (mouseX > imageWidth) {
+      
+      if (this == monkeyWithUpgradeOpen) {
+        for (int i = 0; i < upgrades.size(); i++) {
+          Upgrade u = upgrades.get(i);
+          u.onClick();
+        }
       }
     }
   }
@@ -225,5 +228,12 @@ public class Monkey {
     upgradeShopHover = upgrades.get(0).hovered || upgrades.get(1).hovered;
   }
   
+  void increaseRange(float increase) {
+    attackRadius += increase;
+  }
+  
+  void increaseAttackSpeed(float increase) {
+    attackSpeed -= increase;
+  }
   
 }
