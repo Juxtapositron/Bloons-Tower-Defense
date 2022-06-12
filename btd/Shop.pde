@@ -20,10 +20,7 @@ public class Shop {
       fill(0);
       textSize(30);
       text("Monkey Shop", imageWidth+15, 45);
-      
-      fill(0, 255, 0);
-      text("$" + money, imageWidth+15, 490);
-      fill(0);
+ 
       
     boolean tempHovered = false;  
     for (int i = 0; i < MonkeySale.size(); i++) {

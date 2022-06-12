@@ -67,6 +67,8 @@ void setup() {
 }
 
 void draw() {
+
+
   if(tickCheck)
   tick++;
   if (!start.started()){ //Shadman - trying to add loading screen finess, ultimately a fail

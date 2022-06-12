@@ -177,15 +177,17 @@ public class Monkey {
       
       imageMode(CENTER);
       image(photo, imageWidth+195, 40);
-      drawX();
+      drawCloseButton();
     }
 
   }
 
-  void drawX() {
-
-    ellipseMode(CENTER);
+  void drawCloseButton() {
     fill(255, 0, 0);
-    ellipse(MenuX, MenuY, circleSize, circleSize);
+    rect(706, 324, 180, 54, 20, 20, 20, 20);
+    
+    fill(0);
+    textMode(CENTER);
+    text("Close Menu", 728, 365);
   }
 }
