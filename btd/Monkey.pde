@@ -41,12 +41,6 @@ public class Monkey {
     mtick = (int) attackSpeed;
   }
   
-  void addUpgradesAndMonkey(Upgrade f, Upgrade s) {
-    f.addMonkey(this);
-    s.addMonkey(this);
-    upgrades.add(f);
-    upgrades.add(s);
-  }
   
   float getWhereX() {
     return whereX;
@@ -211,5 +205,16 @@ public class Monkey {
   
   boolean overCloseButton() {
     return mouseX >= 706 && mouseX <= 706+180 && mouseY >= 324 && mouseY <= 324+54;
+  }
+  
+  void addUpgradesAndMonkey(Upgrade f, Upgrade s) {
+    f.addMonkey(this);
+    s.addMonkey(this);
+    upgrades.add(f);
+    upgrades.add(s);
+  }
+  
+  void hoverUpgrades() {
+    upgradeShopHover = upgrades.get(0).hovered || upgrades.get(1).hovered;
   }
 }

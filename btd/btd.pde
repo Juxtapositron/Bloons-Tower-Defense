@@ -23,6 +23,7 @@ boolean mHover = false;
 boolean pmHover = false;
 boolean sHover = false;
 boolean closeShopHover = false;
+boolean upgradeShopHover = false;
 int imageWidth = 686;
 
 void setup() {
@@ -68,11 +69,12 @@ void setup() {
 void changeCursor() {
   if (monkeyWithUpgradeOpen != null) {
     closeShopHover = monkeyWithUpgradeOpen.hoveredCloseMenuButton;
+    monkeyWithUpgradeOpen.hoverUpgrades(); //this will update the value of upgradeShopHover;
   } else {
     closeShopHover = false;
   }
   
-  if (mHover || pmHover || sHover || closeShopHover) {
+  if (mHover || pmHover || sHover || closeShopHover || upgradeShopHover) {
     cursor(HAND);
   } else {
     cursor(ARROW);
