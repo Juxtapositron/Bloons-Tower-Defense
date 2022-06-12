@@ -75,7 +75,7 @@ void changeCursor() {
   if (mHover || pmHover || sHover || closeShopHover) {
     cursor(HAND);
   } else {
-    cursor(CROSS);
+    cursor(ARROW);
   }
   
   

@@ -5,6 +5,7 @@ public class Upgrade {
   float RangeIncrease;
   boolean firstBox; //when true, the upgrade is on top, and when false, it's on the bottom
   boolean hovered = false;
+  boolean bought = false;
   public Upgrade(Monkey _m, int _cost, float _AttackSpeedIncrease, float _RangeIncrease, boolean _firstbox) {
     m = _m;
     cost = _cost;
@@ -19,8 +20,21 @@ public class Upgrade {
     return mouseX >= x1 && mouseX <= x2 && mouseY >= y1 && mouseY <= y2;
   }
   
+  void detectHover() {
+    if (firstBox) {
+      hovered = overRect(684, 70, 898, 179);
+    } else {
+      hovered = overRect(686, 183, 898, 284);
+    }
+  }
   void display() {
-
+    detectHover();
+    
+    if (firstBox) {
+      text("Increases the attack speed of the monkey by " + RangeIncrease/ m.attackRadius + "%", 716, 104);
+    } else {
+      text("Increases the range of the monkey by " + AttackSpeedIncrease/ m.attackSpeed + "%", 716, 104);
+    }
   }
   void onClick() {
     
