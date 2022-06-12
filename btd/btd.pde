@@ -129,13 +129,13 @@ void draw() {
       if (victory) {
 
         fill(33, 232, 94); //green victory
-        textSize(320);
-        text("VICTORY", 10, 600);
+        textSize(100);
+        text("VICTORY", 200, 200);
       }
       if (lost) {
         fill(250, 3, 60); //red lost
-        textSize(280);
-        text("YOU LOST", 10, 600);
+        textSize(100);
+        text("YOU LOST", 200, 200);
       }
     }
   }
@@ -176,5 +176,8 @@ void keyPressed() {
       victory = true;
     }
   previousBindexLength = bindex.size();
+  }
+  if (key == 'd'){
+     listOfRounds.add(1, new Round(new int[] {5, 100}));
   }
 }
