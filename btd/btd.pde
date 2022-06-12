@@ -7,7 +7,7 @@ PImage loading1;
 PImage loading2;
 int cheat = 0;
 
-StartButton button = new StartButton(20, 420);
+StartButton button;
 StartMenu start = new StartMenu("Thumbnail.png");
 int tick;
 boolean roundStarted = false;
@@ -43,7 +43,7 @@ void setup() {
   blur.apply(loading1, loading2);
   mapImage = loadImage("./src/or.jpg"); //loads the map in
 
-
+  button = new StartButton(708, 430);
   listOfRounds.add(new Round(new int[] {1, 15})); //this is like saying 15 red bloons
   listOfRounds.add(new Round(new int[] {1, 10, 2, 5})); //this is like saying 10 red bloons followed by 5 blue bloons
   listOfRounds.add(new Round(new int[] {1, 5, 2, 10}));
@@ -73,30 +73,28 @@ void changeCursor() {
   } else {
     closeShopHover = false;
   }
-  
+
   if (mHover || pmHover || sHover || closeShopHover || upgradeShopHover) {
     cursor(HAND);
   } else {
     cursor(ARROW);
   }
-  
-  
 }
 
 void draw() {
   changeCursor();
-  
 
-  if(tickCheck)
-  tick++;
-  if (!start.started()){ //Shadman - trying to add loading screen finess, ultimately a fail
-  //while(tick <=120){
-      //if(tick < 60){
-      //image(loading1, 0, 0);
-      //}
-      //else {
-        //image(loading2, 0, 0);
-      //}
+
+  if (tickCheck)
+    tick++;
+  if (!start.started()) { //Shadman - trying to add loading screen finess, ultimately a fail
+    //while(tick <=120){
+    //if(tick < 60){
+    //image(loading1, 0, 0);
+    //}
+    //else {
+    //image(loading2, 0, 0);
+    //}
 
     //}
     start.display();
@@ -184,18 +182,18 @@ void keyPressed() {
   }
   if (key == 'r') {
     cheat++;
-    for (int i = 0; i<paths.size(); i++){
+    for (int i = 0; i<paths.size(); i++) {
       paths.get(i).reset();
     }
     roundStarted = false;
     button.unClick();
-    if(listOfRounds.size() != 0)
-    listOfRounds.remove(0); //dismount the finished round from the list
+    if (listOfRounds.size() != 0)
+      listOfRounds.remove(0); //dismount the finished round from the list
     money += 100;
     if (listOfRounds.size() == 0) { //VICTORY, NO ROUNDS LEFT
       tickCheck = false;
       victory = true;
     }
-  previousBindexLength = bindex.size();
+    previousBindexLength = bindex.size();
   }
 }

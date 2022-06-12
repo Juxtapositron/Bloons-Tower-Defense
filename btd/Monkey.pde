@@ -206,7 +206,7 @@ public class Monkey {
     rect(706, 324, 180, 54, 20, 20, 20, 20);
     
     fill(0);
-    textMode(CENTER);
+
     text("Close Menu", 728, 365);
   }
   

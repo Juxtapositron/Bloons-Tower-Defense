@@ -116,7 +116,7 @@ public class Map {
     text(lives + "❤", imageWidth+120, 490);
 
     fill(0, 255, 0);
-    text("$" + money, imageWidth+15, 490);
+    text("$" + money, imageWidth+120, 451);
     fill(0);
   }
 }
