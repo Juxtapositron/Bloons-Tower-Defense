@@ -43,7 +43,9 @@ public class Bloon {
   public int getHP() {
     return hp;
   }
-
+  public void setHP(int newHP) {
+    hp = newHP;
+  }
   public int getVel() {
     return hp * 2;
   }

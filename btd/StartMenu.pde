@@ -16,8 +16,9 @@ public class StartMenu{
 }
 public void display(){
   image(thumb,0,0);
-  fill(255, 255, 255);
-  text("Press s to start!!!", 300, 300);
+  fill(0);
+  textSize(30);
+  text("Press s to start!!!", 580, 50);
  }
 
 }

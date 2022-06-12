@@ -8,7 +8,7 @@ public class Shop {
     PurchaseMonkey DartMonkey = new PurchaseMonkey(1, 200, "./src/000-DartMonkey.png", "./src/Dart_Monkey_Flash.png", imageWidth + 50, 100);
 
     MonkeySale.add(DartMonkey);
-    PurchaseMonkey SuperMonkey = new PurchaseMonkey(2, 200, "SuperMonkey.png", "Super_Monkey.png", imageWidth + 50, 200);
+    PurchaseMonkey SuperMonkey = new PurchaseMonkey(2, 600, "SuperMonkey.png", "Super_Monkey.png", imageWidth + 50, 200);
     MonkeySale.add(SuperMonkey);
     money = 650;
   }

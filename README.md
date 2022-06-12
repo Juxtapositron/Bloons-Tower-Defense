@@ -74,7 +74,7 @@ Shadman (6/8): Turning my eyes to fake loading screen. Found nice images, resear
 
 Shadman (6/9): (pushed on June 10th) Loading screen looked finished, but takes way too long. Will need to look further into it, for moment being Mr. K said I need to get cheating done.
 
-Shadman (6/10 - 6/11) Break day. School finally feels finished.
+Shadman (6/10 - 6/11) Break day. Added Kernel to try to make loading screen nicer (blur effect).
 
 Shadman (6/12): Cheating works seamlessly! Also, loading screen and menu screen in the works, hopefully done by tomorrow morning commit.
 
@@ -82,7 +82,8 @@ Shadman (6/12): Cheating works seamlessly! Also, loading screen and menu screen 
 
 Below is a set of instructions.
 
-To get past the start screen, press "s". To skip rounds, press "r". DO NOT press "r" before pressing "s"!
+To get past the start screen, press "s". To skip a round, press "r". DO NOT press "r" before pressing "s"! When you are on the
+stage before starting a round, press "d" to make the next round unstoppable. By which I mean, if you are on round 2 and then you press "d", round 3 is "unstoppable" - it is meant to kill you. We could have shown you an insta-kill, but we want you to see how you might die in the course of the game, not just how the loss screen looks.
 
 Click once on the dart monkey under the text "Monkey Shop". This should drag a Dart Monkey, which you can then place anywhere on the map as long as there is no Dart Monkey that has been placed nearby. This action costs $200, and can be done any time during gameplay (even between rounds).
 
