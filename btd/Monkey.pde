@@ -16,7 +16,7 @@ public class Monkey {
   boolean hovered;
   boolean clicked = false;
   boolean menuShown = false;
-
+  boolean hoveredCloseMenuButton = false;
   int MenuX = 686;
   int MenuY = 0;
   
@@ -59,7 +59,7 @@ public class Monkey {
   
   void display() {
     hovered = overRect();
-
+    hoveredCloseMenuButton = overCloseButton();
     if (hovered && !clicked) {
       tint(0, 153, 204);
     } else {
@@ -161,6 +161,10 @@ public class Monkey {
     if (hovered && !menuShown) {
       monkeyWithUpgradeOpen = this;
     }
+    
+    if (hoveredCloseMenuButton && monkeyWithUpgradeOpen == this) {
+      monkeyWithUpgradeOpen = null;
+    }
   }
 
   void showMenu() {
@@ -189,5 +193,9 @@ public class Monkey {
     fill(0);
     textMode(CENTER);
     text("Close Menu", 728, 365);
+  }
+  
+  boolean overCloseButton() {
+    return mouseX >= 706 && mouseX <= 706+180 && mouseY >= 324 && mouseY <= 324+54;
   }
 }
