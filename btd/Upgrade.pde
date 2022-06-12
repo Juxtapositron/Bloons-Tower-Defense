@@ -47,44 +47,49 @@ public class Upgrade {
     }
   }
   void display() {
-    detectHover();
-    
-    stroke(0);
-    strokeWeight(1);
-    if (hovered) {
-      stroke(0, 153, 204);
-      strokeWeight(5);
+    if (!bought) {
+      
+      detectHover();
+      
+      stroke(0);
+      strokeWeight(1);
+      if (hovered) {
+        stroke(0, 153, 204);
+        strokeWeight(5);
+      }
+      
+      textSize(13);
+  
+      if (firstBox) {
+        noFill();
+        rect(topx1, topy1, topx2-topx1, topy2-topy1);
+        
+        fill(0, 255, 0);
+        text("Increase attackspeed by " + (int) ((AttackSpeedIncrease * 100)/ (m.attackSpeed)) + "%", topx1+5, topy1 + 15);
+        
+        fill (255, 0, 0);
+        text("Cost: $" + cost, topx1 + 60, topy1 + 76);
+      } else {
+        noFill();
+        rect(botx1, boty1, botx2-botx1, boty2-boty1);
+        
+        fill(0, 255, 0);
+        text("Increase range by " + (int) ((RangeIncrease * 100)/ (m.attackRadius)) + "%", botx1+5, boty1 + 15);
+        
+        fill(255, 0, 0);
+        text("Cost: $" + cost, botx1+60, boty1 + 80);
+      }
+      
+      stroke(0);
+      strokeWeight(1);
     }
-    
-    textSize(13);
-
-    if (firstBox) {
-      noFill();
-      rect(topx1, topy1, topx2-topx1, topy2-topy1);
-      
-      fill(0, 255, 0);
-      text("Increase attackspeed by " + (int) ((AttackSpeedIncrease * 100)/ (m.attackSpeed)) + "%", topx1+5, topy1 + 15);
-      
-      fill (255, 0, 0);
-      text("Cost: $" + cost, topx1 + 60, topy1 + 76);
-    } else {
-      noFill();
-      rect(botx1, boty1, botx2-botx1, boty2-boty1);
-      
-      fill(0, 255, 0);
-      text("Increase range by " + (int) ((RangeIncrease * 100)/ (m.attackRadius)) + "%", botx1+5, boty1 + 15);
-      
-      fill(255, 0, 0);
-      text("Cost: $" + cost, botx1+60, boty1 + 80);
-    }
-    
-    stroke(0);
-    strokeWeight(1);
   }
   void onClick() {
     if (hovered) {
-      if (money > cost) {
+      if (money >= cost) {
         money -= cost;
+        bought = true;
+        hovered = false;
       } else {
         println("insuffient funds");
       }

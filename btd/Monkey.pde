@@ -173,6 +173,13 @@ public class Monkey {
     if (hoveredCloseMenuButton && monkeyWithUpgradeOpen == this) {
       monkeyWithUpgradeOpen = null;
     }
+    
+    if (this == monkeyWithUpgradeOpen) {
+      for (int i = 0; i < upgrades.size(); i++) {
+        Upgrade u = upgrades.get(i);
+        u.onClick();
+      }
+    }
   }
 
   void showMenu() {
@@ -217,4 +224,6 @@ public class Monkey {
   void hoverUpgrades() {
     upgradeShopHover = upgrades.get(0).hovered || upgrades.get(1).hovered;
   }
+  
+  
 }
