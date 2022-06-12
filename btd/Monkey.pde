@@ -220,8 +220,8 @@ public class Monkey {
   void addUpgradesAndMonkey(Upgrade f, Upgrade s) {
     f.addMonkey(this);
     s.addMonkey(this);
-    upgrades.add(f);
-    upgrades.add(s);
+    upgrades.add(f.shallowCopy());
+    upgrades.add(s.shallowCopy());
   }
   
   void hoverUpgrades() {

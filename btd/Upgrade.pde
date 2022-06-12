@@ -101,6 +101,11 @@ public class Upgrade {
     }
   }
   
+  Upgrade shallowCopy() {
+    Upgrade u = new Upgrade(m, cost, AttackSpeedIncrease, RangeIncrease, firstBox);
+    return u;
+  }
+  
   
   
 }
