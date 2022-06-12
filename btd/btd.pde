@@ -6,6 +6,7 @@ PImage thumb;
 PImage loading1;
 PImage loading2;
 int cheat = 0;
+
 StartButton button = new StartButton(20, 420);
 StartMenu start = new StartMenu("Thumbnail.png");
 int tick;
@@ -37,12 +38,12 @@ void setup() {
 
   thumb = loadImage("Thumbnail.png");
   thumb.resize(900,507);
+
   loading1 = loadImage("loading.png");
   loading1.resize(900,507);
   loading2 = loading1.copy();
   blur.apply(loading1, loading2);
   mapImage = loadImage("./src/or.jpg"); //loads the map in
-
 
 
   listOfRounds.add(new Round(new int[] {1, 15})); //this is like saying 15 red bloons
