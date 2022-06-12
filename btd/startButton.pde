@@ -3,14 +3,16 @@ public class StartButton {
   float x;
   float y;
   int dimX = 70;
-  int dimY= 190;
+  int dimY= 70;
 
   boolean clicked = false;
   boolean overlap = false;
   boolean hovered;
+  PImage button;
   public StartButton(float _x, float _y) {
     x = _x;
     y = _y;
+    button = loadImage("./src/playbutton.png");
   }
 
   void onClick() {
@@ -27,6 +29,7 @@ public class StartButton {
   
   void unClick() {
     clicked = false;
+    sHover = false;
   }
 
   boolean overRect() {
@@ -36,19 +39,21 @@ public class StartButton {
   void display() {
     hovered = overRect();
     sHover = hovered; //this is fine because there is only one start button
+    
     if (!clicked) {
-      textSize(30);
       if (overRect()) {
-        fill(38, 165, 52);
-        rect(x, y, dimY, dimX, 20, 20, 20, 20);
-        fill(0);
-        text("Start round", x + dimX/8, y + dimY/4);
+     
+        tint(38, 165, 52);
+
       } else {
-        fill(35, 216, 84);
-        rect(x, y, dimY, dimX, 20, 20, 20, 20);
-        fill(0);
-        text("Start round", x + dimX/8, y + dimY/4);
+        tint(35, 216, 84);
+        
+        
       }
+
+      button.resize(dimX, dimY);
+      image(button, x, y);
+
     }
   }
 }

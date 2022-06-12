@@ -11,6 +11,8 @@ public class PurchaseMonkey {
   int type;
 
   boolean hovered;
+  Upgrade first; //first goes in the first upgrade slot
+  Upgrade second; //second goes in the second upgrade slot
   public PurchaseMonkey(int _type, float _price, String shopURL, String _placeURL, float _x, float _y) {
     type = _type;
     placeURL = _placeURL;
@@ -21,20 +23,27 @@ public class PurchaseMonkey {
     y = _y;
     where = x-dim/2;
   }
-
+  
+  void addUpgrades(Upgrade f, Upgrade s) {
+    first = f;
+    second = s;
+  }
   void onClick() {
-    if (overRect()) {
+    
+    if (mouseX > imageWidth && overRect()) {
       clicked = !clicked;
     } else {
-      
+      if (mouseX < imageWidth) { //can't put it on the shop
       if (clicked) {
         //code for putting on map here
-        if (mouseX < imageWidth) { //can't put it on the shop
+    
 
           clicked = !clicked;
 
           if (!overlap && price<=money) {
+            
             Monkey m = new Monkey(type, placeURL, mouseX, mouseY);
+            m.addUpgradesAndMonkey(first, second);
             monkies.add(m);
             money = money - (int)price;
           }

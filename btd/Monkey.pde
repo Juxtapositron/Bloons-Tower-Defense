@@ -16,11 +16,11 @@ public class Monkey {
   boolean hovered;
   boolean clicked = false;
   boolean menuShown = false;
-
+  boolean hoveredCloseMenuButton = false;
   int MenuX = 686;
   int MenuY = 0;
   
-  int circleSize = 25;
+  ArrayList<Upgrade> upgrades = new ArrayList<Upgrade>();
   PImage sBackground = loadImage("./src/shopbackground.png");
   public Monkey(int _type, String img, float _x, float _y) {
     type = _type;
@@ -40,7 +40,8 @@ public class Monkey {
     }
     mtick = (int) attackSpeed;
   }
-
+  
+  
   float getWhereX() {
     return whereX;
   }
@@ -57,9 +58,15 @@ public class Monkey {
     return attackSpeed;
   }
   
+  void displayUpgrades() {
+    for (int i = 0; i < upgrades.size(); i++) {
+      Upgrade u = upgrades.get(i);
+      u.display();
+    }
+  }
   void display() {
     hovered = overRect();
-
+    hoveredCloseMenuButton = overCloseButton();
     if (hovered && !clicked) {
       tint(0, 153, 204);
     } else {
@@ -72,6 +79,7 @@ public class Monkey {
     if (this == monkeyWithUpgradeOpen) {
       fill(0, 0, 0, 50);
       ellipse(x, y, attackRadius *2, attackRadius *2);
+      displayUpgrades();
     }
 
     imageMode(CENTER);
@@ -161,6 +169,20 @@ public class Monkey {
     if (hovered && !menuShown) {
       monkeyWithUpgradeOpen = this;
     }
+    
+    if (hoveredCloseMenuButton && monkeyWithUpgradeOpen == this) {
+      monkeyWithUpgradeOpen = null;
+    }
+    
+    if (mouseX > imageWidth) {
+      
+      if (this == monkeyWithUpgradeOpen) {
+        for (int i = 0; i < upgrades.size(); i++) {
+          Upgrade u = upgrades.get(i);
+          u.onClick();
+        }
+      }
+    }
   }
 
   void showMenu() {
@@ -177,15 +199,41 @@ public class Monkey {
       
       imageMode(CENTER);
       image(photo, imageWidth+195, 40);
-      drawX();
+      drawCloseButton();
     }
 
   }
 
-  void drawX() {
-
-    ellipseMode(CENTER);
+  void drawCloseButton() {
     fill(255, 0, 0);
-    ellipse(MenuX, MenuY, circleSize, circleSize);
+    rect(706, 324, 180, 54, 20, 20, 20, 20);
+    
+    fill(0);
+
+    text("Close Menu", 728, 365);
   }
+  
+  boolean overCloseButton() {
+    return mouseX >= 706 && mouseX <= 706+180 && mouseY >= 324 && mouseY <= 324+54;
+  }
+  
+  void addUpgradesAndMonkey(Upgrade f, Upgrade s) {
+    f.addMonkey(this);
+    s.addMonkey(this);
+    upgrades.add(f);
+    upgrades.add(s);
+  }
+  
+  void hoverUpgrades() {
+    upgradeShopHover = upgrades.get(0).hovered || upgrades.get(1).hovered;
+  }
+  
+  void increaseRange(float increase) {
+    attackRadius += increase;
+  }
+  
+  void increaseAttackSpeed(float increase) {
+    attackSpeed -= increase;
+  }
+  
 }

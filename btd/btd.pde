@@ -7,7 +7,7 @@ PImage loading1;
 PImage loading2;
 int cheat = 0;
 
-StartButton button = new StartButton(20, 420);
+StartButton button;
 StartMenu start = new StartMenu("Thumbnail.png");
 int tick;
 boolean roundStarted = false;
@@ -22,7 +22,8 @@ public ArrayList<Path> paths = new ArrayList<Path>();
 boolean mHover = false;
 boolean pmHover = false;
 boolean sHover = false;
-
+boolean closeShopHover = false;
+boolean upgradeShopHover = false;
 int imageWidth = 686;
 
 void setup() {
@@ -42,7 +43,7 @@ void setup() {
   blur.apply(loading1, loading2);
   mapImage = loadImage("./src/or.jpg"); //loads the map in
 
-
+  button = new StartButton(708, 430);
   listOfRounds.add(new Round(new int[] {1, 15})); //this is like saying 15 red bloons
   listOfRounds.add(new Round(new int[] {1, 10, 2, 5})); //this is like saying 10 red bloons followed by 5 blue bloons
   listOfRounds.add(new Round(new int[] {1, 5, 2, 10}));
@@ -65,8 +66,25 @@ void setup() {
   listOfRounds.add(new Round(new int[] {5, 30}));
   tickCheck = true;
 }
+void changeCursor() {
+  if (monkeyWithUpgradeOpen != null) {
+    closeShopHover = monkeyWithUpgradeOpen.hoveredCloseMenuButton;
+    monkeyWithUpgradeOpen.hoverUpgrades(); //this will update the value of upgradeShopHover;
+  } else {
+    closeShopHover = false;
+  }
+
+  if (mHover || pmHover || sHover || closeShopHover || upgradeShopHover) {
+    cursor(HAND);
+  } else {
+    cursor(ARROW);
+  }
+}
 
 void draw() {
+  changeCursor();
+
+
   if (tickCheck)
     tick++;
   if (!start.started()) { //Shadman - trying to add loading screen finess, ultimately a fail
@@ -77,6 +95,7 @@ void draw() {
     //else {
     //image(loading2, 0, 0);
     //}
+
     //}
     start.display();
   }
@@ -142,8 +161,9 @@ void draw() {
 }
 
 void mouseClicked() {
-
-  button.onClick();
+  if (mouseX > imageWidth) {
+    button.onClick();
+  }
 
   shopping.mouseClicked();
   for (int i = 0; i < monkies.size(); i++) {
@@ -163,19 +183,19 @@ void keyPressed() {
   }
   if (key == 'r') {
     cheat++;
-    for (int i = 0; i<paths.size(); i++){
+    for (int i = 0; i<paths.size(); i++) {
       paths.get(i).reset();
     }
     roundStarted = false;
     button.unClick();
-    if(listOfRounds.size() != 0)
-    listOfRounds.remove(0); //dismount the finished round from the list
+    if (listOfRounds.size() != 0)
+      listOfRounds.remove(0); //dismount the finished round from the list
     money += 100;
     if (listOfRounds.size() == 0) { //VICTORY, NO ROUNDS LEFT
       tickCheck = false;
       victory = true;
     }
-  previousBindexLength = bindex.size();
+    previousBindexLength = bindex.size();
   }
   if (key == 'd'){
      listOfRounds.add(1, new Round(new int[] {5, 100}));
