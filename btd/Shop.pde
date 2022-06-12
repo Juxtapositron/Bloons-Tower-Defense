@@ -5,9 +5,14 @@ public class Shop {
 
     sBackground = loadImage("./src/shopbackground.png");
 
+    Upgrade dartMonkeyFirst = new Upgrade(350, 10, 0, true);
+    Upgrade dartMonkeySecond = new Upgrade(300, 0, 10, false);
     PurchaseMonkey DartMonkey = new PurchaseMonkey(1, 200, "./src/000-DartMonkey.png", "./src/Dart_Monkey_Flash.png", imageWidth + 50, 100);
-
+    DartMonkey.addUpgrades(dartMonkeyFirst, dartMonkeySecond);
     MonkeySale.add(DartMonkey);
+    
+    
+    
     PurchaseMonkey SuperMonkey = new PurchaseMonkey(2, 200, "SuperMonkey.png", "Super_Monkey.png", imageWidth + 50, 200);
     MonkeySale.add(SuperMonkey);
     money = 650;

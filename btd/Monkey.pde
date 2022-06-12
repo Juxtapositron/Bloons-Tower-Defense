@@ -20,7 +20,7 @@ public class Monkey {
   int MenuX = 686;
   int MenuY = 0;
   
-  int circleSize = 25;
+  ArrayList<Upgrade> upgrades = new ArrayList<Upgrade>();
   PImage sBackground = loadImage("./src/shopbackground.png");
   public Monkey(int _type, String img, float _x, float _y) {
     type = _type;
@@ -40,7 +40,18 @@ public class Monkey {
     }
     mtick = (int) attackSpeed;
   }
-
+  
+  void addUpgradesAndMonkey(Upgrade f, Upgrade s) {
+    f.addMonkey(this);
+    s.addMonkey(this);
+    upgrades.add(f);
+    upgrades.add(s);
+  }
+  void addUpgrade(int _cost, float _AttackSpeedIncrease, float _RangeIncrease, boolean _firstbox) {
+    Upgrade u = new Upgrade(this, _cost, _AttackSpeedIncrease, _RangeIncrease, _firstbox);
+    upgrades.add(u);
+  }
+  
   float getWhereX() {
     return whereX;
   }
@@ -57,6 +68,12 @@ public class Monkey {
     return attackSpeed;
   }
   
+  void displayUpgrades() {
+    for (int i = 0; i < upgrades.size(); i++) {
+      Upgrade u = upgrades.get(i);
+      u.display();
+    }
+  }
   void display() {
     hovered = overRect();
     hoveredCloseMenuButton = overCloseButton();
@@ -72,6 +89,7 @@ public class Monkey {
     if (this == monkeyWithUpgradeOpen) {
       fill(0, 0, 0, 50);
       ellipse(x, y, attackRadius *2, attackRadius *2);
+      displayUpgrades();
     }
 
     imageMode(CENTER);
