@@ -9,10 +9,6 @@ PImage loading2;
 StartButton button = new StartButton(20, 420);
 StartMenu start = new StartMenu("Thumbnail.png");
 int tick;
-Kernel blur = new Kernel( new float[][] {
-    {.111, .111, .111},
-    {.111, .111, .111},
-    {.111, .111, .111}    });
 boolean roundStarted = false;
 ArrayList<Round> listOfRounds = new ArrayList<Round>();
 boolean victory = false;
@@ -26,6 +22,7 @@ boolean pmHover = false;
 boolean sHover = false;
 
 int imageWidth = 686;
+
 void setup() {
   tick = 0;
   size(900, 507);
