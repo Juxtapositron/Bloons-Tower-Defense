@@ -10,8 +10,6 @@ public class Path {
     this(_x, _y, new ArrayList<Bloon>());
   }
 
-
-
   public float[] location() {
     return new float[] {x, y};
   }

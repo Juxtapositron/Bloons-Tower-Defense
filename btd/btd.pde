@@ -10,10 +10,6 @@ int cheat = 0;
 StartButton button = new StartButton(20, 420);
 StartMenu start = new StartMenu("Thumbnail.png");
 int tick;
-Kernel blur = new Kernel( new float[][] {
-    {.111, .111, .111},
-    {.111, .111, .111},
-    {.111, .111, .111}    });
 boolean roundStarted = false;
 boolean tickCheck;
 ArrayList<Round> listOfRounds = new ArrayList<Round>();
@@ -28,6 +24,7 @@ boolean pmHover = false;
 boolean sHover = false;
 
 int imageWidth = 686;
+
 void setup() {
   tick = 0;
   size(900, 507);

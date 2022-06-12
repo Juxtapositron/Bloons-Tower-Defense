@@ -19,6 +19,8 @@ public class Monkey {
 
   int MenuX = 686;
   int MenuY = 0;
+  
+  int circleSize = 25;
   PImage sBackground = loadImage("./src/shopbackground.png");
   public Monkey(int _type, String img, float _x, float _y) {
     type = _type;
@@ -63,9 +65,9 @@ public class Monkey {
     } else {
       tint(255);
     }
-    if (this == monkeyWithUpgradeOpen) {
-      showMenu();
-    }
+
+    showMenu();
+    
     
     if (this == monkeyWithUpgradeOpen) {
       fill(0, 0, 0, 50);
@@ -152,22 +154,35 @@ public class Monkey {
     return mouseX >= whereX && mouseX <= whereX+dim && mouseY >= whereY && mouseY <= whereY+dim;
   }
 
+  boolean overX() {
+    return mouseX >= MenuX && mouseX <= MenuX+25 && mouseY >= whereY && mouseY <= whereY+dim;
+  }
   void onClick() {
     if (hovered && !menuShown) {
       monkeyWithUpgradeOpen = this;
-      menuShown = true;
     }
   }
 
   void showMenu() {
-    tint(0);
-    image(sBackground, imageWidth, 0); 
     
-    drawX();
+    if (this == monkeyWithUpgradeOpen) {
+      tint(255);
+      image(sBackground, imageWidth, 0); 
+      
+      textSize(25);
+      
+      //photo.resize(dim, dim);
+      
+      text("Upgrades For ", imageWidth+12, 45);
+      
+      imageMode(CENTER);
+      image(photo, imageWidth+195, 40);
+      drawX();
+    }
+
   }
 
   void drawX() {
-    int circleSize = 25;
 
     ellipseMode(CENTER);
     fill(255, 0, 0);

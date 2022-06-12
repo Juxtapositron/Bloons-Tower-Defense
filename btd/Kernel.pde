@@ -1,3 +1,8 @@
+Kernel blur = new Kernel( new float[][] {
+    {.111, .111, .111},
+    {.111, .111, .111},
+    {.111, .111, .111}    });
+
 public class Kernel {
       float[][]kernel;
 
