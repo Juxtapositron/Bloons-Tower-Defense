@@ -11,8 +11,8 @@ public class Shop {
     DartMonkey.addUpgrades(dartMonkeyFirst, dartMonkeySecond);
     MonkeySale.add(DartMonkey);
 
-    
-    
+
+
     Upgrade superMonkeyFirst = new Upgrade(200, 3, 0, true);
     Upgrade superMonkeySecond = new Upgrade(150, 0, 40, false);
     PurchaseMonkey SuperMonkey = new PurchaseMonkey(2, 600, "SuperMonkey.png", "Super_Monkey.png", imageWidth + 50, 200);
@@ -25,18 +25,18 @@ public class Shop {
   void display() {
     if (monkeyWithUpgradeOpen == null) { //have to include this or else they will be clickable through upgrades
       image(sBackground, imageWidth, 0);
-  
+
       fill(0);
       textSize(30);
       text("Monkey Shop", imageWidth+15, 45);
-  
-  
+
+
       boolean tempHovered = false;  
       for (int i = 0; i < MonkeySale.size(); i++) {
         PurchaseMonkey monkey = MonkeySale.get(i);
         monkey.display();
-  
-  
+
+
         if (monkey.hovered) {
           tempHovered = true;
         }
@@ -50,11 +50,11 @@ public class Shop {
   void mouseClicked() {
     if (monkeyWithUpgradeOpen == null) {
       for (int i = 0; i < MonkeySale.size(); i++) {
-        
-        
+
+
         PurchaseMonkey monkey = MonkeySale.get(i);
         monkey.onClick();
       }
-    } 
+    }
   }
 }

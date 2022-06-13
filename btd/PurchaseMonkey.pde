@@ -23,25 +23,25 @@ public class PurchaseMonkey {
     y = _y;
     where = x-dim/2;
   }
-  
+
   void addUpgrades(Upgrade f, Upgrade s) {
     first = f;
     second = s;
   }
   void onClick() {
-    
+
     if (mouseX > imageWidth && overRect()) {
       clicked = !clicked;
     } else {
-      if (mouseX < imageWidth) { //can't put it on the shop
-      if (clicked) {
-        //code for putting on map here
-    
+      if (mouseX < imageWidth) { //can't the monkey on the shop (THAT'S NOT HOW IT WORKS!)
+        if (clicked) {
+          //code for putting on map here
+
 
           clicked = !clicked;
 
           if (!overlap && price<=money) {
-            
+
             Monkey m = new Monkey(type, placeURL, mouseX, mouseY);
             m.addUpgradesAndMonkey(first, second);
             monkies.add(m);
@@ -66,7 +66,7 @@ public class PurchaseMonkey {
         return;
       }
     }
-    
+
     for (int i = 0; i < paths.size(); i++) {
       Path path = paths.get(i);
       // dim = 120 for now, so 30 = dim/4
@@ -75,30 +75,29 @@ public class PurchaseMonkey {
         overlap = true;
         return;
       }
-    overlap = false;
+      overlap = false;
+    }
   }
-  }
-  
+
   boolean overRect() {
     return mouseX >= where && mouseX <= where+dim && mouseY >= y && mouseY <= y+dim;
   }
 
   void display() {
     text("$" + (int) price, x + dim/2, y + dim/2 + 12);
-    
+
     overlapCheck();
-    
+
     hovered = overRect();
     if (!clicked) {
       if (hovered) {
-       
+
         tint(0, 153, 204);
       } else {
         tint(255);
-
       }
       image(photo, where, y);
-      
+
       tint(255);
     } else {
 
@@ -111,8 +110,8 @@ public class PurchaseMonkey {
         tint(255);
       }
       fill(0, 0, 0, 50);
-      if(type == 1) {
-        
+      if (type == 1) {
+
         ellipse(mouseX, mouseY, 180, 180);
       } else if (type ==2) {
         ellipse(mouseX, mouseY, 360, 360);
@@ -122,6 +121,5 @@ public class PurchaseMonkey {
       image(photo, mouseX, mouseY);
       imageMode(CORNER);
     }
-    
   }
 }

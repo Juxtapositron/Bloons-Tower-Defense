@@ -21,12 +21,12 @@ public class StartButton {
       roundStarted = true;
     }
   }
-  
+
   void onPress() { //trigerred by spacebar
     clicked = true;
     roundStarted = true;
   }
-  
+
   void unClick() {
     clicked = false;
     sHover = false;
@@ -39,21 +39,17 @@ public class StartButton {
   void display() {
     hovered = overRect();
     sHover = hovered; //this is fine because there is only one start button
-    
+
     if (!clicked) {
       if (overRect()) {
-     
-        tint(38, 165, 52);
 
+        tint(38, 165, 52);
       } else {
         tint(35, 216, 84);
-        
-        
       }
 
       button.resize(dimX, dimY);
       image(button, x, y);
-
     }
   }
 }
