@@ -36,23 +36,23 @@ Kevin (5/30) : I implemented a cleaner solution to adding bloons to each round, 
 
 Shadman (5/30): Working on Monkey class. Had to finish in one day to get to MVP, so rushed an incomplete version. Should be at MVP, due to help from Kevin. Also created all ten rounds, and added round number global variable.
 
-Kevin (5/31) :
+Kevin (5/31) : I added the attacking implementation, including selecting the bloon to be shot at, the rotation for "aiming" at the bloon and the actual depleting of the bloon. This was in preparation for the demo.
 
 Shadman (5/31): Relaxed a lot since demos were due today, only really added onPath() to prevented placement on Monkeys on the Path.
 
-Kevin (6/1) :
+Kevin (6/1) : I fixed a bug with the rotation of the monkey to look at the bloon by adding 270 degrees to the arctan between the bloon and the monkey.
 
 Shadman (6/1): Starting planning Super Monkey additions. Most work was done afk, using math to determine good stats for Super Monkey.
 
-Kevin (6/2) :
+Kevin (6/2) : I added a hover effect for Monkey and a rudimentary implementation for upgrading monkeys. I also did some minor bug fixes.
 
 Shadman (6/2): I only merged my work on the laptop. Most time spent preparing presentation ideas for Kevin and I (We presented today).
 
-Kevin (6/3) :
+Kevin (6/3) : I changed the shop background to a wooden background, added spacebar support for starting the round, and made a opaque radius show up when the monkey is clicked/selected by the user.
 
 Shadman (6/3): Spent time helping make attackRadius show on click with Kevin, and finally implemented Super Monkey in all its glory (very initial). Had to add type parameter to long list of parameters for monkey, makes implementing more monkeys in the future easier.
 
-Kevin (6/4) :
+Kevin (6/4) : Break day.
 
 Shadman (6/4): Super Monkey done! Works fabulously with Kevin's changes!
 
@@ -60,15 +60,15 @@ Kevin (6/5) : Break day.
 
 Shadman (6/5): Break day.
 
-Kevin (6/6) :
+Kevin (6/6) : Stared at my code for an hour trying to figure out why the cursor was oscillating from the hand to the arrow cursor.
 
 Shadman (6/6): Start menu's beginnings. Very beginning-level thumbnail, borrowing from BTD5 promotion flyers.
 
-Kevin (6/7) :
+Kevin (6/7) : Fixed cursor bug from yesterday. Cursor works fine for button, monkey, and purchaseMonkey. I also manually resized the paths and map to better fit a 720p display. 
 
 Shadman (6/7): Pretty basic, starting screen lets you start once you press 's'. Also, tickCheck boolean severely cleans up code in other aspects of code.
 
-Kevin (6/8):
+Kevin (6/8) : Started implementation on monkey upgrades and decided that the upgrade menu should be overlayed on top of the shop.
 
 Shadman (6/8): Turning my eyes to fake loading screen. Found nice images, researched ideas on how to make it look real.
 
@@ -76,7 +76,11 @@ Shadman (6/9): (pushed on June 10th) Loading screen looked finished, but takes w
 
 Shadman (6/10 - 6/11) Break day. Added Kernel to try to make loading screen nicer (blur effect).
 
+Kevin (6/10 - 6/11) : Break days.
+
 Shadman (6/12): Cheating works seamlessly! Also, loading screen and menu screen in the works, hopefully done by tomorrow morning commit.
+
+Kevin (6/12) : Fully implemented and debugged upgrade menu. I changed and moved around some design choices and I also added polishing touches.
 
 ^^^ Commit Log ^^^
 
