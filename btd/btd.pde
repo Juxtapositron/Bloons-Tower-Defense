@@ -3,8 +3,6 @@ Map map;
 int money;
 PImage or;
 PImage thumb;
-PImage loading1;
-PImage loading2;
 int cheat = 0;
 
 StartButton button;
@@ -37,10 +35,6 @@ void setup() {
   thumb = loadImage("Thumbnail.png");
   thumb.resize(900, 507);
 
-  loading1 = loadImage("loading.png");
-  loading1.resize(900, 507);
-  loading2 = loading1.copy();
-  blur.apply(loading1, loading2);
   mapImage = loadImage("./src/or.jpg"); //loads the map in
 
   button = new StartButton(708, 430);
@@ -48,9 +42,9 @@ void setup() {
   listOfRounds.add(new Round(new int[] {1, 10, 2, 5})); //this is like saying 10 red bloons followed by 5 blue bloons
   listOfRounds.add(new Round(new int[] {1, 5, 2, 10}));
   listOfRounds.add(new Round(new int[] {2, 15}));
-  listOfRounds.add(new Round(new int[] {1, 5, 2, 5, 3, 5})); 
+  listOfRounds.add(new Round(new int[] {1, 5, 2, 5, 3, 5}));
   listOfRounds.add(new Round(new int[] {2, 5, 3, 10})); 
-  listOfRounds.add(new Round(new int[] {3, 15})); 
+  listOfRounds.add(new Round(new int[] {3, 15}));
   listOfRounds.add(new Round(new int[] {3, 5, 4, 5}));
   listOfRounds.add(new Round(new int[] {4, 10}));
   listOfRounds.add(new Round(new int[] {5, 5}));
@@ -87,16 +81,7 @@ void draw() {
 
   if (tickCheck)
     tick++;
-  if (!start.started()) { //Shadman - trying to add loading screen finess, ultimately a fail
-    //while(tick <=120){
-    //if(tick < 60){
-    //image(loading1, 0, 0);
-    //}
-    //else {
-    //image(loading2, 0, 0);
-    //}
-
-    //}
+  if (!start.started()) {
     start.display();
   }
 
