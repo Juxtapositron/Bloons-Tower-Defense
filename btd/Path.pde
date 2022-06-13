@@ -66,6 +66,7 @@ public class Path {
   }
 
   public void display(Bloon other) {
+    //display a bloon onto this path
     image(other.getImg(), x-15, y-15);
   }
 

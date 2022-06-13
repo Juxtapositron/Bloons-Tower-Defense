@@ -33,7 +33,7 @@ public class PurchaseMonkey {
     if (mouseX > imageWidth && overRect()) {
       clicked = !clicked;
     } else {
-      if (mouseX < imageWidth) { //can't put it on the shop
+      if (mouseX < imageWidth) { //can't the monkey on the shop (THAT'S NOT HOW IT WORKS!)
         if (clicked) {
           //code for putting on map here
 
