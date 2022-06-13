@@ -182,19 +182,24 @@ void mouseClicked() {
 
 void cheat() {
   cheat++;
+  
   for (int i = 0; i<paths.size(); i++) {
     paths.get(i).reset();
   }
+  
   roundStarted = false;
   button.unClick();
+  
   if (listOfRounds.size() != 0)
     listOfRounds.remove(0); //dismount the finished round from the list
-  money += 100;
+  
   if (listOfRounds.size() == 0) { //VICTORY, NO ROUNDS LEFT
     tickCheck = false;
     victory = true;
   }
+  
   previousBindexLength = bindex.size();
+  money += 100;
 }
 
 void keyPressed() {
@@ -204,15 +209,15 @@ void keyPressed() {
 
   if (start.started()) {
 
-    if (key == ' ') {
+    if (key == ' ') { //starts the next round
       button.onPress();
     }
 
-    if (key == 'r' || key == 'r') {
+    if (key == 'r' || key == 'r') { //skips the round
       cheat();
     }
 
-    if (key == 'd' || key == 'D') {
+    if (key == 'd' || key == 'D') { //makes new round unstoppable
       listOfRounds.add(1, new Round(new int[] {5, 100}));
     }
   }

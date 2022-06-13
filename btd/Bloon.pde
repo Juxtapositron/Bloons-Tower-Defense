@@ -47,12 +47,13 @@ public class Bloon {
     hp = newHP;
   }
   public int getVel() {
-    return hp * 2;
+    return hp * 3;
   }
   public PImage getImg() {
     return bloon;
   }
   public int deplete() {
+    //destroys one layer of bloon
     hp--;
     if (hp == 0) {
       x = 0; 
