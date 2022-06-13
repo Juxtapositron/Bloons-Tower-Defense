@@ -123,3 +123,30 @@ public class PurchaseMonkey {
     }
   }
 }
+
+public class DartMonkey extends PurchaseMonkey {
+  public DartMonkey() {
+    super(1, 200, "./src/000-DartMonkey.png", "./src/Dart_Monkey_Flash.png", imageWidth + 50, 100);
+    
+  }
+  
+  void upgrades() {
+    Upgrade dartMonkeyFirst = new Upgrade(150, 10, 0, true);
+    Upgrade dartMonkeySecond = new Upgrade(100, 0, 30, false);
+    
+    addUpgrades(dartMonkeyFirst, dartMonkeySecond);
+  }
+}
+
+public class SuperMonkey extends PurchaseMonkey {
+  public SuperMonkey() {
+    super(2, 600, "SuperMonkey.png", "Super_Monkey.png", imageWidth + 50, 200);
+  }
+  
+  void upgrades() {
+    Upgrade superMonkeyFirst = new Upgrade(200, 3, 0, true);
+    Upgrade superMonkeySecond = new Upgrade(150, 0, 40, false);
+    
+    addUpgrades(superMonkeyFirst, superMonkeySecond);
+  }
+}

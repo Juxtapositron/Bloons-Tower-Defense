@@ -5,20 +5,20 @@ public class Shop {
 
     sBackground = loadImage("./src/shopbackground.png");
 
+    /*
     Upgrade dartMonkeyFirst = new Upgrade(150, 10, 0, true);
     Upgrade dartMonkeySecond = new Upgrade(100, 0, 30, false);
     PurchaseMonkey DartMonkey = new PurchaseMonkey(1, 200, "./src/000-DartMonkey.png", "./src/Dart_Monkey_Flash.png", imageWidth + 50, 100);
     DartMonkey.addUpgrades(dartMonkeyFirst, dartMonkeySecond);
-    MonkeySale.add(DartMonkey);
+    */
+    DartMonkey dm = new DartMonkey();
+    dm.upgrades();
+    MonkeySale.add(dm);
 
-
-
-    Upgrade superMonkeyFirst = new Upgrade(200, 3, 0, true);
-    Upgrade superMonkeySecond = new Upgrade(150, 0, 40, false);
-    PurchaseMonkey SuperMonkey = new PurchaseMonkey(2, 600, "SuperMonkey.png", "Super_Monkey.png", imageWidth + 50, 200);
-    SuperMonkey.addUpgrades(superMonkeyFirst, superMonkeySecond);
-
-    MonkeySale.add(SuperMonkey);
+    SuperMonkey sm = new SuperMonkey();
+    sm.upgrades();
+    MonkeySale.add(sm);
+    
     money = 650;
   }
 
