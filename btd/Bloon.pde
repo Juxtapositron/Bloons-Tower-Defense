@@ -47,12 +47,13 @@ public class Bloon {
     hp = newHP;
   }
   public int getVel() {
-    return hp * 2;
+    return hp * 3;
   }
   public PImage getImg() {
     return bloon;
   }
   public int deplete() {
+    //destroys one layer of bloon
     hp--;
     if (hp == 0) {
       x = 0; 
@@ -75,7 +76,7 @@ public class Bloon {
   public float[] location() {
     return new float[]{x, y};
   }
-  public float[] setLocation(float[] newLoc){
+  public float[] setLocation(float[] newLoc) {
     x = newLoc[0];
     y = newLoc[1];
     return newLoc;
