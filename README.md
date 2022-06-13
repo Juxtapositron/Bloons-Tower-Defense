@@ -64,7 +64,7 @@ Kevin (6/6) : Stared at my code for an hour trying to figure out why the cursor 
 
 Shadman (6/6): Start menu's beginnings. Very beginning-level thumbnail, borrowing from BTD5 promotion flyers.
 
-Kevin (6/7) : Fixed cursor bug from yesterday. Cursor works fine for button, monkey, and purchaseMonkey. I also manually resized the paths and map to better fit a 720p display. 
+Kevin (6/7) : Fixed cursor bug from yesterday. Cursor works fine for button, monkey, and purchaseMonkey. I also manually resized the paths and map to better fit a 720p display.
 
 Shadman (6/7): Pretty basic, starting screen lets you start once you press 's'. Also, tickCheck boolean severely cleans up code in other aspects of code.
 
@@ -89,6 +89,8 @@ Below is a set of instructions.
 To get past the start screen, press "s". To skip a round, press "r". DO NOT press "r" before pressing "s"! When you are on the
 stage before starting a round, press "d" to make the next round unstoppable. By which I mean, if you are on round 2 and then you press "d", round 3 is "unstoppable" - it is meant to kill you. We could have shown you an insta-kill, but we want you to see how you might die in the course of the game, not just how the loss screen looks.
 
-Click once on the dart monkey under the text "Monkey Shop". This should drag a Dart Monkey, which you can then place anywhere on the map as long as there is no Dart Monkey that has been placed nearby. This action costs $200, and can be done any time during gameplay (even between rounds).
+Observe the presence of a dart monkey and a super monkey picture on the shop. Click once on the dart monkey under the text "Monkey Shop". This should drag a Dart Monkey, which you can then place anywhere on the map as long as there is no Dart Monkey that has been placed nearby. If successfully done, this action costs $200, and can be done any time during gameplay (even between rounds), otherwise the monkey you drag is "trashed". Same rules apply for the super monkey, except that costs $600.
 
-To start each round, click the "Start Round" button (or press the space bar). When it appears again, the round has ended, and you need to start the next round. Repeat until loss/victory. Game currently contains 10 rounds of easy difficulty.
+There is an option to upgrade monkeys. Click on a monkey that has already been placed on the map, and you will see its range as well as an upgrade menu to the left. The rest is self-explanatory.
+
+To start each round, click the "Start Round" button (or press the space bar). When it appears again, the round has ended, and you need to start the next round. Repeat until loss/victory. Game currently contains 20 rounds of easy difficulty.
