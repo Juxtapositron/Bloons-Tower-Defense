@@ -17,12 +17,13 @@ public class Monkey {
   boolean clicked = false;
   boolean menuShown = false;
   boolean hoveredCloseMenuButton = false;
+  boolean hoveredSellButton = false;
   int MenuX = 686;
   int MenuY = 0;
 
   ArrayList<Upgrade> upgrades = new ArrayList<Upgrade>();
   PImage sBackground = loadImage("./src/shopbackground.png");
-  public Monkey(int _type, String img, float _x, float _y) {
+  public Monkey(int _type, String img, float _x, float _y, float _price) {
     type = _type;
     photo = loadImage(img);
     photo.resize(dim, dim);
@@ -39,6 +40,7 @@ public class Monkey {
       attackSpeed = 4;
     }
     mtick = (int) attackSpeed;
+    price = _price;
   }
 
 
@@ -97,10 +99,12 @@ public class Monkey {
   void display() {
     hovered = overRect(); //is it over the Monkey?
     hoveredCloseMenuButton = overCloseButton(); //is it over the close menu button?
+    hoveredSellButton = overRect(716, 300, 716+160, 300+40);
     hoverEffect();
     
     thisMonkeyIsSelectedMonkey();
     rotateMonkey();
+    
   }
   float getAngle(float pX1, float pY1, float pX2, float pY2) {
     return atan2(pY2 - pY1, pX2 - pX1)* 180/ PI;
@@ -182,10 +186,13 @@ public class Monkey {
       monkeyWithUpgradeOpen = this;
     }
 
-    if (hoveredCloseMenuButton && monkeyWithUpgradeOpen == this) {
+    if (hoveredCloseMenuButton && monkeyWithUpgradeOpen == this) { //closing the menu
       monkeyWithUpgradeOpen = null;
     }
-
+  
+    if (hoveredSellButton && monkeyWithUpgradeOpen == this) { //selling the monkey 
+      sell();
+    }
     if (mouseX > imageWidth) {
 
       if (this == monkeyWithUpgradeOpen) {
@@ -212,22 +219,52 @@ public class Monkey {
     imageMode(CENTER);
     image(photo, imageWidth+195, 40);
     drawCloseButton();
+    displaySellButton();
     
   }
 
   void drawCloseButton() {
-    fill(255, 0, 0);
-    rect(706, 324, 180, 54, 20, 20, 20, 20);
+    if (hoveredCloseMenuButton) {
+      fill(255, 121, 121);
+    } else {
 
+      fill(255);
+    }
+    
+
+    rect(685, 358, 214, 44);
     fill(0);
-
-    text("Close Menu", 728, 365);
+    text("Close Menu", 728, 390);
+    
   }
 
   boolean overCloseButton() {
-    return mouseX >= 706 && mouseX <= 706+180 && mouseY >= 324 && mouseY <= 324+54;
+    return mouseX >= 685 && mouseX <= 685+214 && mouseY >=358 && mouseY <= 358+44;
   }
 
+  boolean overRect(float x1, float y1, float x2, float y2) {
+    return mouseX >= x1 && mouseX <= x2 && mouseY >= y1 && mouseY <= y2;
+  }
+  
+  void sell() {
+      money += (int) (price * 0.75); //gain money back
+      monkies.remove(this);
+      monkeyWithUpgradeOpen = null;
+  }
+  
+  void displaySellButton() {
+    if (hoveredSellButton) {
+      fill(255, 121, 121);
+    } else {
+      fill(255, 0, 0);
+    }
+    
+    rect(716, 300, 160, 40, 20, 20, 20, 20);
+    textSize(25);
+    fill(0);
+    text("Sell: $" + (int) (price * 0.75), 738, 330);
+    
+  }
   void addUpgradesAndMonkey(Upgrade f, Upgrade s) {
     f.addMonkey(this);
     s.addMonkey(this);

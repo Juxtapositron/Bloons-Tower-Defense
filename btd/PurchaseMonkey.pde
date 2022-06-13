@@ -42,7 +42,7 @@ public class PurchaseMonkey {
 
           if (!overlap && price<=money) {
 
-            Monkey m = new Monkey(type, placeURL, mouseX, mouseY);
+            Monkey m = new Monkey(type, placeURL, mouseX, mouseY, price);
             m.addUpgradesAndMonkey(first, second);
             monkies.add(m);
             money = money - (int)price;

@@ -3,8 +3,6 @@ Map map;
 int money;
 PImage or;
 PImage thumb;
-PImage loading1;
-PImage loading2;
 int cheat = 0;
 
 StartButton button;
@@ -24,6 +22,8 @@ boolean pmHover = false;
 boolean sHover = false;
 boolean closeShopHover = false;
 boolean upgradeShopHover = false;
+boolean sellHover = false;
+
 int imageWidth = 686;
 
 void setup() {
@@ -69,15 +69,17 @@ void checkSelectedMonkeyCursor() {
   //this function updates the value of closeShopHover and upgradeShopHover to be used in changeCursor
   if (monkeyWithUpgradeOpen != null) {
     closeShopHover = monkeyWithUpgradeOpen.hoveredCloseMenuButton;
+    sellHover = monkeyWithUpgradeOpen.hoveredSellButton;
     monkeyWithUpgradeOpen.hoverUpgrades(); //this will update the value of upgradeShopHover;
   } else {
     closeShopHover = false;
+    sellHover = false;
   }
 }
 void changeCursor() {
   checkSelectedMonkeyCursor();
 
-  if (mHover || pmHover || sHover || closeShopHover || upgradeShopHover) { //if any of the possible hover effects are active, have the cursor be a hand
+  if (mHover || pmHover || sHover || closeShopHover || upgradeShopHover || sellHover) { //if any of the possible hover effects are active, have the cursor be a hand
     cursor(HAND);
   } else {
     cursor(ARROW);
@@ -174,7 +176,7 @@ void mouseClicked() {
       m.onClick();
     }
 
-    //System.out.println(mouseX + " " + mouseY);
+    System.out.println(mouseX + " " + mouseY);
   } else {
     start.start();
   }

@@ -94,6 +94,8 @@ public class Upgrade {
 
         m.increaseRange(RangeIncrease);
         m.increaseAttackSpeed(AttackSpeedIncrease);
+        
+        m.price += cost;
       } else {
         println("insuffient funds");
       }
