@@ -30,20 +30,18 @@ void setup() {
   tick = 0;
   size(900, 507);
 
-  println(height);
+  thumb = loadImage("Thumbnail.png"); //make the thumbnail image accessible for start
+  thumb.resize(900, 507);
+  start.display();
+
   shopping = new Shop();
   map = new Map();
 
-  thumb = loadImage("Thumbnail.png");
-  thumb.resize(900, 507);
-
-  loading1 = loadImage("loading.png");
-  loading1.resize(900, 507);
-  loading2 = loading1.copy();
-  blur.apply(loading1, loading2);
   mapImage = loadImage("./src/or.jpg"); //loads the map in
 
   button = new StartButton(708, 430);
+
+  //Create rounds here
   listOfRounds.add(new Round(new int[] {1, 15})); //this is like saying 15 red bloons
   listOfRounds.add(new Round(new int[] {1, 10, 2, 5})); //this is like saying 10 red bloons followed by 5 blue bloons
   listOfRounds.add(new Round(new int[] {1, 5, 2, 10}));
@@ -66,138 +64,156 @@ void setup() {
   listOfRounds.add(new Round(new int[] {5, 30}));
   tickCheck = true;
 }
-void changeCursor() {
+
+void checkSelectedMonkeyCursor() {
+  //this function updates the value of closeShopHover and upgradeShopHover to be used in changeCursor
   if (monkeyWithUpgradeOpen != null) {
     closeShopHover = monkeyWithUpgradeOpen.hoveredCloseMenuButton;
     monkeyWithUpgradeOpen.hoverUpgrades(); //this will update the value of upgradeShopHover;
   } else {
     closeShopHover = false;
   }
+}
+void changeCursor() {
+  checkSelectedMonkeyCursor();
 
-  if (mHover || pmHover || sHover || closeShopHover || upgradeShopHover) {
+  if (mHover || pmHover || sHover || closeShopHover || upgradeShopHover) { //if any of the possible hover effects are active, have the cursor be a hand
     cursor(HAND);
   } else {
     cursor(ARROW);
   }
 }
 
-void draw() {
-  changeCursor();
-
-
-  if (tickCheck)
-    tick++;
-  if (!start.started()) { //Shadman - trying to add loading screen finess, ultimately a fail
-    //while(tick <=120){
-    //if(tick < 60){
-    //image(loading1, 0, 0);
-    //}
-    //else {
-    //image(loading2, 0, 0);
-    //}
-
-    //}
-    start.display();
+void checkGameLost() {
+  if (lives <= 0) { 
+    lives = 0;
+    tickCheck = false;
+    lost = true;
   }
+}
 
-  //println(paths.size());
-  else {
-    if (lives <= 0) {
-      lives = 0;
-      tickCheck = false;
-      lost = true;
+void uponRoundStart() {
+  //contains game logic 
+  if (roundStarted) {
+    Round upcoming = listOfRounds.get(0);
+    upcoming.start();
+    upcoming.move();
+
+    for (int i = 0; i < monkies.size(); i++) {
+      Monkey m = monkies.get(i);
+      m.attack();
+      //println(m.mtick);
     }
-    if (!victory && !lost) {
+
+    if (bindex.size() == 0 && previousBindexLength > 0 && upcoming.bloons.size() == 0) {
+      //round is over when bindex == 0 AND the previous bindex was greater than 0;
+      roundStarted = false;
+      button.unClick();
+      listOfRounds.remove(0); //dismount the finished round from the list
+      money += 100;
+      map.progress();
+      if (listOfRounds.size() == 0) { //VICTORY, NO ROUNDS LEFT
+        tickCheck = false;
+        victory = true;
+      }
+    }
+    previousBindexLength = bindex.size();
+  }
+}
+
+void uponVictory() {
+  if (victory) {
+
+    fill(33, 232, 94); //green victory
+    textSize(100);
+    text("VICTORY", 200, 200);
+  }
+  if (lost) {
+    fill(250, 3, 60); //red lost
+    textSize(100);
+    text("YOU LOST", 200, 200);
+  }
+}
+void draw() {
+
+
+  if (start.started()) { //can only run after start menu is passed
+
+    if (tickCheck)
+      tick++;
+    changeCursor();
+    checkGameLost();
+
+    if (!victory && !lost) { //stops the game if won or lost
       background(255);
       tint(255);
       image(mapImage, 0, 0);
+
       shopping.display();
-
       map.display();
-
-
-
-      if (roundStarted) {
-        Round upcoming = listOfRounds.get(0);
-        upcoming.start();
-        upcoming.move();
-
-        for (int i = 0; i < monkies.size(); i++) {
-          Monkey m = monkies.get(i);
-          m.attack();
-          //println(m.mtick);
-        }
-
-        if (bindex.size() == 0 && previousBindexLength > 0 && upcoming.bloons.size() == 0) {
-          //round is over when bindex == 0 AND the previous bindex was greater than 0;
-          roundStarted = false;
-          button.unClick();
-          listOfRounds.remove(0); //dismount the finished round from the list
-          money += 100;
-          map.progress();
-          if (listOfRounds.size() == 0) { //VICTORY, NO ROUNDS LEFT
-            tickCheck = false;
-            victory = true;
-          }
-        }
-        previousBindexLength = bindex.size();
-      }
-
       button.display();
-    } else { //VICTORY
-      if (victory) {
 
-        fill(33, 232, 94); //green victory
-        textSize(100);
-        text("VICTORY", 200, 200);
-      }
-      if (lost) {
-        fill(250, 3, 60); //red lost
-        textSize(100);
-        text("YOU LOST", 200, 200);
-      }
+      uponRoundStart();
+    } else { //VICTORY
+      uponVictory();
     }
   }
 }
 
 void mouseClicked() {
-  if (mouseX > imageWidth) {
-    button.onClick();
-  }
+  //perform all the mouse click events for all the possible buttons
+  if (start.started()) {
 
-  shopping.mouseClicked();
-  for (int i = 0; i < monkies.size(); i++) {
-    Monkey m = monkies.get(i);
-    m.onClick();
-  }
+    if (mouseX > imageWidth) {
+      button.onClick();
+    }
 
-  System.out.println(mouseX + " " + mouseY);
+    shopping.mouseClicked();
+    for (int i = 0; i < monkies.size(); i++) {
+      Monkey m = monkies.get(i);
+      m.onClick();
+    }
+
+    //System.out.println(mouseX + " " + mouseY);
+  } else {
+    start.start();
+  }
+}
+
+void cheat() {
+  cheat++;
+  for (int i = 0; i<paths.size(); i++) {
+    paths.get(i).reset();
+  }
+  roundStarted = false;
+  button.unClick();
+  if (listOfRounds.size() != 0)
+    listOfRounds.remove(0); //dismount the finished round from the list
+  money += 100;
+  if (listOfRounds.size() == 0) { //VICTORY, NO ROUNDS LEFT
+    tickCheck = false;
+    victory = true;
+  }
+  previousBindexLength = bindex.size();
 }
 
 void keyPressed() {
-  if (key == ' ') {
-    button.onPress();
-  }
-  if (key == 's') {
+  if (key == 's' || key == 'S') {
     start.start();
   }
-  if (key == 'r') {
-    cheat++;
-    for (int i = 0; i<paths.size(); i++) {
-      paths.get(i).reset();
+
+  if (start.started()) {
+
+    if (key == ' ') {
+      button.onPress();
     }
-    roundStarted = false;
-    button.unClick();
-    if (listOfRounds.size() != 0)
-      listOfRounds.remove(0); //dismount the finished round from the list
-    money += 100;
-    if (listOfRounds.size() == 0) { //VICTORY, NO ROUNDS LEFT
-      tickCheck = false;
-      victory = true;
+
+    if (key == 'r' || key == 'r') {
+      cheat();
     }
-    previousBindexLength = bindex.size();
-  }
-  if (key == 'd'){
-     listOfRounds.add(1, new Round(new int[] {5, 100}));
+
+    if (key == 'd' || key == 'D') {
+      listOfRounds.add(1, new Round(new int[] {5, 100}));
+    }
   }
 }
